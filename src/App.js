@@ -1,9 +1,15 @@
 import './App.css';
-import DailyClass from './components/DailyClass';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import DailyClass from './DailyClass/DailyClass';
 
 function App() {
   return (
-    <DailyClass/>
+    <div className="App">
+      <Header/>
+      <DailyClass/>
+      <Footer/>
+    </div>
   );
 }
 

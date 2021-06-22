@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import TopicList from './TopicList';
 import ResourcesList from './ResourcesList';
 
+import './dailyClass.css';
+
 export default function DailyClass() {
 
     const trainer = {

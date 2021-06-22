@@ -5,6 +5,7 @@ header{
     height: 4em;
     background-color: #18181A;
     position: absolute;
+    z-index: 100;
 }
 
 .header__title{

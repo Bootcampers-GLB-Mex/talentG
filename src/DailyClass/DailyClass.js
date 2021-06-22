@@ -13,7 +13,7 @@ export default function DailyClass() {
     };
 
     const dailyImage = {
-        src: "/images/daily-class-1.png",
+        src: "/assets/img/daily-class-1.png",
         alt: "Day 1 Bootcamp:CSS",
         caption: "UI Engineering Studio. Day 1. Bootcamp:CSS"
     };
@@ -31,7 +31,7 @@ export default function DailyClass() {
             </div>
             <div className="dailyClass__contentRigth">
                 <figure className="dailyClass__figure">
-                    <img className="dailyClass__image" src={dailyImage.src} alt={dailyImage.alt}></img>
+                    <img className="dailyClass__image" src={process.env.PUBLIC_URL + dailyImage.src} alt={dailyImage.alt}></img>
                     <figcaption hidden>{dailyImage.caption}</figcaption>
                 </figure>
                 <p className="dailyClass__trainer">Trainer: <a href={trainer.href}>{trainer.name}</a></p>

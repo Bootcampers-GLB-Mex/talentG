@@ -5,7 +5,9 @@ import ResourcesList from './ResourcesList';
 
 import './dailyClass.css';
 
-export default function DailyClass() {
+export default function DailyClass(props) {
+
+    const { isTrainer } = props;
 
     const trainer = {
         name: "Juan Crisóstomo",
@@ -36,11 +38,18 @@ export default function DailyClass() {
                 </figure>
                 <p className="dailyClass__trainer">Trainer: <a href={trainer.href}>{trainer.name}</a></p>
             </div>
+            {isTrainer &&
+                <>
+                    <button className="dailyClass__options"><img src={process.env.PUBLIC_URL + "/assets/img/options.png"} alt=""></img></button>
+                    <button className="dailyClass__edit">Editar</button>
+                </>
+            }
         </section>
     );
 }
 
 DailyClass.propTypes = {
+    isTrainer: PropTypes.bool,
     trainer: PropTypes.shape({
         name: PropTypes.string,
         href: PropTypes.string

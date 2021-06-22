@@ -1,6 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap');
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway"), url(./fonts/Raleway-Regular.ttf) format("opentype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-weight: 600;
+  src: local("Raleway"), url(./fonts/Raleway-Medium.ttf) format("opentype");
+}
+
+:root {
+  font-size: 16px;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway';
+}
 
 .App {
   height: 80vh;
   width: 80vw;
 }
+

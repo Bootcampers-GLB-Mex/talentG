@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
 export default function TopicList() {
     const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
     const dailyTopics = [
         {
-            title: "Qué es CCSOM y su importancia."
+            title: "Qué es CSSOM y su importancia."
         },
         {
             title: "Qué son los selectores y su especificidad."
@@ -31,4 +33,11 @@ export default function TopicList() {
             </ol>
         </>
     )
+}
+
+TopicList.propTypes = {
+    topicsTitle: PropTypes.string,
+    dailyTopics: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string
+    }))
 }

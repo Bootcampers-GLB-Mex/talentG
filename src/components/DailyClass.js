@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TopicList from './TopicList';
 import ResourcesList from './ResourcesList';
 
@@ -34,4 +36,16 @@ export default function DailyClass() {
             </div>
         </section>
     );
+}
+
+DailyClass.propTypes = {
+    trainer: PropTypes.shape({
+        name: PropTypes.string,
+        href: PropTypes.string
+    }),
+    dailyImage: PropTypes.shape({
+        src: PropTypes.string,
+        alt: PropTypes.string,
+        caption: PropTypes.string
+    })
 }

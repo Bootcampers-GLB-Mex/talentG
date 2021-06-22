@@ -27,7 +27,7 @@ export default function DailyClass() {
             </div>
             <div className="dailyClass__contentRigth">
                 <figure className="dailyClass__figure">
-                    <img src={dailyImage.src} alt={dailyImage.alt}></img>
+                    <img className="dailyClass__image" src={dailyImage.src} alt={dailyImage.alt}></img>
                     <figcaption hidden>{dailyImage.caption}</figcaption>
                 </figure>
                 <p className="dailyClass__trainer">Trainer: <a href={trainer.href}>{trainer.name}</a></p>

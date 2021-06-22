@@ -52,6 +52,10 @@
   margin-top: 1.375rem;
 }
 
+.dailyClass__image{
+  max-width: 100%;
+}
+
 .topics__list,
 .topics__title,
 .resources__title,

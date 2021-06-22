@@ -1,5 +1,5 @@
 import './App.css';
-import DailyClass from './components/dailyClass';
+import DailyClass from './components/DailyClass';
 
 function App() {
   return (

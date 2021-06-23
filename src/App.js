@@ -1,22 +1,21 @@
-import { useState } from 'react';
-
+import React from 'react'; 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import DailyClass from './DailyClass/DailyClass';
-import HomeworkFeedback from './HomeworkFeedback/HomeworkFeedback';
+import MainContainer from './MainContainer/MainContainer';
+import HomeworkFeedback from './MainContainer/HomeworkFeedback/HomeworkFeedback';
 
 function App() {
 
-  const [isTrainer] = useState(true);
-
   return (
-    <div className="App">
-      <Header />
-      <DailyClass isTrainer={isTrainer} />
-      <HomeworkFeedback/>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={MainContainer}/>
+          <Route path='/homeworkFeedback' component={HomeworkFeedback}/>  
+          {/* line 14, that path just is a test */}
+        </Switch> 
+      </div>
+    </Router>
   );
 }
 

@@ -1,6 +1,6 @@
 import HomeworkList from './HomeworkList.js';
 
-import './homeworkFeedBack.css';
+import './homeworkFeedback.css';
 
 export default function HomeworkFeedBack() {
 

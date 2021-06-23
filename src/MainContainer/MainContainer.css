@@ -1,0 +1,4 @@
+.ContainerButtons{
+    display: flex;
+    flex-direction: column;
+  }

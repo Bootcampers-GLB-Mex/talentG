@@ -22,8 +22,8 @@ export default function MainContainer() {
             <Header />
             <DailyClass
                 isTrainer={isTrainer}
-                dailyScheduleData={dailyScheduleData} 
-                trainer = {trainer}/>
+                dailyScheduleData={dailyScheduleData}
+                trainer={trainer} />
             <HomeworkFeedBack />
             <div className= "ContainerButtons">
                 <Button children="Editar Perfil"></Button>

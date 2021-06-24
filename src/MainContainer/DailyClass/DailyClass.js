@@ -7,28 +7,37 @@ import './dailyClass.css';
 
 export default function DailyClass(props) {
 
-    const { isTrainer } = props;
-
-    const trainer = {
-        name: "Juan Crisóstomo",
-        href: "/"
-    };
-
+    const { isTrainer, dailyScheduleData, trainer } = props;
+    const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
     const dailyImage = {
         src: "/assets/img/daily-class-1.png",
         alt: "Day 1 Bootcamp:CSS",
         caption: "UI Engineering Studio. Day 1. Bootcamp:CSS"
     };
+    const resources = [
+        {
+            title: "What is flex?",
+            href: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox"
+        },
+        {
+            title: "Understanding Grid Layout",
+            href: "https://developer.mozilla.org/en-US/docs/Web/CSS/grid"
+        },
+        {
+            title: "CSS Selectors",
+            href: "https://www.w3schools.com/cssref/css_selectors.asp"
+        },
+    ]
 
     return (
         <section className="dailyClass">
             <div className="dailyClass__contentLeft">
-                <h1 className="dailyClass__title">Día 1 - CSS</h1>
+                <h1 className="dailyClass__title">Día {dailyScheduleData.day} - {dailyScheduleData.topic}</h1>
                 <div className="dailyClass__topics">
-                    <TopicList></TopicList>
+                    <TopicList summary={dailyScheduleData.summary} topicsTitle={topicsTitle}></TopicList>
                 </div>
                 <div className="dailyClass__resources">
-                    <ResourcesList></ResourcesList>
+                    <ResourcesList resources={resources}></ResourcesList>
                 </div>
             </div>
             <div className="dailyClass__contentRigth">
@@ -36,7 +45,7 @@ export default function DailyClass(props) {
                     <img className="dailyClass__image" src={process.env.PUBLIC_URL + dailyImage.src} alt={dailyImage.alt}></img>
                     <figcaption hidden>{dailyImage.caption}</figcaption>
                 </figure>
-                <p className="dailyClass__trainer">Trainer: <a href={trainer.href}>{trainer.name}</a></p>
+                <p className="dailyClass__trainer">Trainer: <a href="/">{trainer.firstName + trainer.lastName}</a></p>
             </div>
             {isTrainer &&
                 <>
@@ -50,9 +59,18 @@ export default function DailyClass(props) {
 
 DailyClass.propTypes = {
     isTrainer: PropTypes.bool,
+    dailyScheduleData: PropTypes.shape({
+        date: PropTypes.string,
+        day: PropTypes.number,
+        id: PropTypes.number,
+        id_Trainer: PropTypes.number,
+        id_training: PropTypes.number,
+        summary: PropTypes.array,
+        topic: PropTypes.string
+    }),
     trainer: PropTypes.shape({
-        name: PropTypes.string,
-        href: PropTypes.string
+        firstName: PropTypes.string,
+        lastName: PropTypes.string
     }),
     dailyImage: PropTypes.shape({
         src: PropTypes.string,

@@ -1,0 +1,51 @@
+.Card{
+    width: 281px;
+    height: 254px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #000000;
+
+}
+
+.image-container img{
+    background-color: #C4C4C4;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    padding: 5px;
+    transform: translate(90px,17px);
+}
+
+.lower-container{
+    margin-top: 60px;
+    height: 300px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.lower-container h2{
+    color:black;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.lower-container h4{
+    color: #7C8089;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.lower-container h3{
+    color: #4B4EFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.125rem;
+}
+
+.lower-container p{
+    color: #000000;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1rem;
+}

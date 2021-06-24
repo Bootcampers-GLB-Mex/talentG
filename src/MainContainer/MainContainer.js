@@ -13,7 +13,7 @@ const [isTrainer] = useState(true);
     
 return (
       <>  
-            <Header/>
+        <main className="MainContainer">  
                 <DailyClass isTrainer={isTrainer} />
                 <HomeworkFeedBack/>
             <div className= "ContainerButtons">
@@ -21,7 +21,7 @@ return (
                 <Button children="Ver Agenda"></Button>
                 <Button children="Ver Feedback"></Button>
             </div>
-            <Footer/>
+        </main>  
         </>    
     )
 }

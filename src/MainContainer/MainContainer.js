@@ -19,8 +19,8 @@ export default function MainContainer() {
             <Header />
             <DailyClass
                 isTrainer={isTrainer}
-                dailyScheduleData={dailyScheduleData} 
-                trainer = {trainer}/>
+                dailyScheduleData={dailyScheduleData}
+                trainer={trainer} />
             <HomeworkFeedBack />
             <DailyClassSurvey />
             <Footer />

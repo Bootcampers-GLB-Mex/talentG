@@ -1,0 +1,7 @@
+.ContainerButtons{
+    display: flex;
+    flex-direction: column;
+  }
+.MainContainer{
+    display: grid;
+}

@@ -129,7 +129,11 @@ export const currentSchedule = {
     day: 1,
     topic: "CSS",
     date: "01-06-2021",
-    summary: " 1. Qué es CSSOM y su importancia. 2. Qué son los selectores y su especificidad. 3. Cómo declarar los estilos en una hoja de estilos. 4. Propiedades para realizar layouting. 5. Flexbox. 6. Grid CSS.",
+    summary: ["Qué es CSSOM y su importancia.", 
+        "Qué son los selectores y su especificidad.", 
+        "Cómo declarar los estilos en una hoja de estilos.", 
+        "Propiedades para realizar layouting.", "Flexbox.", 
+        "Grid CSS."],
     id_Trainer: 1,
     id_training: 1
 }

@@ -5,6 +5,9 @@ import Footer from '../Footer/Footer';
 import DailyClass from './DailyClass/DailyClass';
 import HomeworkFeedBack from './HomeworkFeedback/HomeworkFeedback';
 import DailyClassSurvey from "./DailyClassSurvey/DailyClassSurvey";
+import Button from "./button1/button";
+
+import "./MainContainer.css";
 
 import { currentSchedule, trainerById1 } from '../sampleData';
 
@@ -22,6 +25,11 @@ export default function MainContainer() {
                 dailyScheduleData={dailyScheduleData} 
                 trainer = {trainer}/>
             <HomeworkFeedBack />
+            <div className= "ContainerButtons">
+                <Button children="Editar Perfil"></Button>
+                <Button children="Ver Agenda"></Button>
+                <Button children="Ver Feedback"></Button>
+            </div>
             <DailyClassSurvey />
             <Footer />
         </>

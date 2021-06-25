@@ -27,8 +27,8 @@ ModalContainer.propTypes = {
     show: PropTypes.bool,
     handleClose: PropTypes.func,
     handlePrimary: PropTypes.func,
-    primaryBtn: PropTypes.string,
-    secondaryBtn: PropTypes.string
+    primaryBtnName: PropTypes.string,
+    secondaryBtnName: PropTypes.string
 };
 
 ModalContainer.defaultProps = {

@@ -18,18 +18,19 @@ export default function MainContainer() {
 
     return (
         <div className="MainContainer">
-            <Card />
+            <Card/>
+        <div className="DailyClass">
             <DailyClass
                 isTrainer={isTrainer}
                 dailyScheduleData={dailyScheduleData}
-                trainer={trainer} />
-            <HomeworkFeedBack />
+                trainer={trainer} /> </div>
+            <div className="HomeworkFeedBack"><HomeworkFeedBack/></div>
             <div className="ContainerButtons">
                 <Button children="Editar Perfil"></Button>
                 <Button children="Ver Agenda"></Button>
                 <Button children="Ver Feedback"></Button>
             </div>
-            <DailyClassSurvey />
+            <div className="DailyClassSurvey"><DailyClassSurvey/></div>
         </div>
     );
 }

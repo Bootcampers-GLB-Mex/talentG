@@ -4,10 +4,6 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import DailyClass from "./DailyClass/DailyClass";
 import HomeworkFeedBack from "./HomeworkFeedback/HomeworkFeedback";
-import React from "react";
-import { useState } from "react";
-import DailyClass from "./DailyClass/DailyClass";
-import HomeworkFeedBack from "./HomeworkFeedback/HomeworkFeedback";
 import DailyClassSurvey from "./DailyClassSurvey/DailyClassSurvey";
 import ClassFeelings from "./ClassFeelings/ClassFeelings";
 import Button from "./button1/button";
@@ -42,7 +38,7 @@ export default function MainContainer() {
         <Button children="Ver Feedback"></Button>
       </div>
       <div className="DailyClassSurvey">
-        <DailyClassSurvey />
+        <DailyClassSurvey dailyScheduleData={dailyScheduleData} />
       </div>
     </div>
   );

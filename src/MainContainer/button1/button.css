@@ -1,9 +1,9 @@
 .button1{
     background-color:white;
     color: black;
-    width: 25rem;
+    width: 18rem;
     height: 6rem;
-    font-size: 2rem;
+    font-size: 1rem;
     padding: 1rem 2rem;
     text-align: left;
     border-radius: .5rem;
@@ -31,7 +31,7 @@
 }
 
 .button1:hover span {
-  padding-right: 9rem;
+  padding-right: 7rem;
 }
 
 .button1:hover span:after {

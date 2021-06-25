@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 import './editModal.css';
 
@@ -35,4 +36,11 @@ export default function EditModalBody({ day, topicTitle, summary, trainers }) {
             </form>
         </>
     );
+}
+
+EditModalBody.propTypes = {
+    day: PropTypes.number,
+    topicTitle: PropTypes.string,
+    summary: PropTypes.array,
+    trainers: PropTypes.array
 }

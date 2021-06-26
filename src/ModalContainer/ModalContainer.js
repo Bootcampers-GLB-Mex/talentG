@@ -20,10 +20,10 @@ export default function ModalContainer({
                         data-testid="primary">
                         {primaryBtnName}
                     </button>}
-                <button 
-                    className="modalContainer__secondary" 
-                    title={secondaryBtnName} 
-                    onClick={handleClose} 
+                <button
+                    className="modalContainer__secondary"
+                    title={secondaryBtnName}
+                    onClick={handleClose}
                     data-testid="secondary">
                     {secondaryBtnName}
                 </button>

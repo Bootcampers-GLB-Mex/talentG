@@ -3,13 +3,36 @@ import PropTypes from 'prop-types';
 export default function HomeworkList() {
     const hwList = [
         {
-            title: "Tarea - Magazine Layout"
+            title: "Tarea - Magazine Layout",
+            href: "/"
         },
         {
-            title: "Tarea - CodeWars Katas"
+            title: "Tarea - CodeWars Katas",
+            href: "/"
         },
         {
-            title: "Tarea - Puzzle Js"
+            title: "Tarea - Puzzle Js",
+            href: "/"
+        },
+        {
+            title: "Tarea - Magazine Layout",
+            href: "/"
+        },
+        {
+            title: "Tarea - Magazine Layout",
+            href: "/"
+        },
+        {
+            title: "Tarea - CodeWars Katas",
+            href: "/"
+        },
+        {
+            title: "Tarea - Puzzle Js",
+            href: "/"
+        },
+        {
+            title: "Tarea - Magazine Layout",
+            href: "/"
         }
     ];
 
@@ -17,7 +40,7 @@ export default function HomeworkList() {
         <>
             <ul className="homeworkFeedback__list">
                 {hwList.map((hw) => {
-                    return <li key={hw.title}>{hw.title}</li>
+                    return <li key={hw.title}><a href={hw.href} alt={hw.title}>{hw.title}</a></li>
                 })}
             </ul>
         </>

@@ -6,6 +6,8 @@ import MainContainer from './MainContainer/MainContainer';
 import HomeworkFeedback from './MainContainer/HomeworkFeedback/HomeworkFeedback';
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import AgendaModal from './AgendaModal/AgendaModal';
+import ModalContainer from './ModalContainer/ModalContainer';
 
 function App() {
 
@@ -15,7 +17,9 @@ function App() {
         <Header></Header>
         <Switch>
           <Route exact path='/' component={MainContainer}/>
-          <Route path='/homeworkFeedback' component={HomeworkFeedback}/>  
+          <Route path='/homeworkFeedback' component={HomeworkFeedback}/> 
+          <Route path='/agenda' component={AgendaModal}/> 
+          <Route path='/modal' component={ModalContainer}/> 
           {/* line 14, that path just is a test */}
         </Switch> 
         <Footer></Footer>

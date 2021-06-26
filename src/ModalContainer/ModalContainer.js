@@ -6,15 +6,25 @@ export default function ModalContainer({
     children, show, handleClose, handlePrimary, primaryBtnName, secondaryBtnName }) {
 
     return (
-        <div className="modalContainer" style={{ display: show ? 'block' : 'none' }}>
+        <div className="modalContainer"
+            style={{ display: show ? 'block' : 'none' }}
+            data-testid="modalContainer">
             <div className="modalContainer__overlay" onClick={handleClose}></div>
-            <div className="modalContainer__content">
+            <div className="modalContainer__content" data-testid="modalContent">
                 {children}
-                {!!primaryBtnName &&
-                    <button className="modalContainer__primary" title={primaryBtnName} onClick={handlePrimary}>
+                {primaryBtnName &&
+                    <button
+                        className="modalContainer__primary"
+                        title={primaryBtnName}
+                        onClick={handlePrimary}
+                        data-testid="primary">
                         {primaryBtnName}
                     </button>}
-                <button className="modalContainer__secondary" title={secondaryBtnName} onClick={handleClose}>
+                <button
+                    className="modalContainer__secondary"
+                    title={secondaryBtnName}
+                    onClick={handleClose}
+                    data-testid="secondary">
                     {secondaryBtnName}
                 </button>
             </div>
@@ -36,6 +46,6 @@ ModalContainer.defaultProps = {
     show: false,
     handleClose: () => (false),
     handlePrimary: () => console.log("clicked primary"),
-    primaryBtnName: "Confirmar",
+    primaryBtnName: "",
     secondaryBtnName: "Cerrar"
 };

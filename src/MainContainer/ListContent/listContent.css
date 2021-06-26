@@ -1,0 +1,11 @@
+.list__title {
+    margin: 0 2rem 1rem;
+    font-size: 1.5rem;
+}
+  
+.list__content {
+    font-size: 0.87rem;
+    list-style-type: none;
+    line-height: 200%;
+    margin: 0 2rem;
+}

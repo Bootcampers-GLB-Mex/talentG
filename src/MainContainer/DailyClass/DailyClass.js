@@ -4,7 +4,7 @@ import { useState } from 'react';
 import TopicList from './TopicList';
 import ResourcesList from './ResourcesList';
 import ModalContainer from '../../ModalContainer/ModalContainer';
-import EditModalBody from './EditModalBody';
+import EditModalBody from '../../EditAgendaByDay/EditModalBody';
 import OptionsModalBody from './OptionsModalBody';
 
 import './dailyClass.css';
@@ -13,6 +13,7 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
 
     const [showEdit, setShowEdit] = useState(false);
     const [showOptions, setShowOptions] = useState(false);
+    const [showTrainer, setShowTrainer] = useState(false);
     const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
     const dailyImage = {
         src: "/assets/img/daily-class-1.png",
@@ -44,6 +45,10 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
         setShowOptions(() => !showOptions);
     }
 
+    function toggleTrainer() {
+        setShowTrainer(() => !showTrainer);
+    }
+
     return (
         <>
             <section className="dailyClass">
@@ -61,7 +66,7 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
                         <img className="dailyClass__image" src={process.env.PUBLIC_URL + dailyImage.src} alt={dailyImage.alt}></img>
                         <figcaption hidden>{dailyImage.caption}</figcaption>
                     </figure>
-                    <p className="dailyClass__trainer">Trainer: <a href="/">{trainer.firstName + trainer.lastName}</a></p>
+                    <p className="dailyClass__trainer" onClick={toggleTrainer}>Trainer:{trainer.firstName + trainer.lastName}</p>
                 </div>
                 {isTrainer &&
                     <>
@@ -98,6 +103,9 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
                     />
                 </>
             }
+            <ModalContainer
+                show={showTrainer}
+                handleClose={toggleTrainer} />
         </>
     );
 }

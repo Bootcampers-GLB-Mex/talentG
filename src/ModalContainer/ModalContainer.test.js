@@ -22,14 +22,16 @@ describe('<ModalContainer/>', () => {
     expect(button).toBeFalsy();
   });
   it('render primary button with custom inner text', () => {
-    render(<ModalContainer primaryBtnName={'any string'} />);
-    const button = screen.queryByTestId('primary');
-    expect(button).toHaveTextContent('any string');
+    const innerTextButton = 'any string';
+    render(<ModalContainer primaryBtnName={innerTextButton} />);
+    const button = screen.getByText(innerTextButton, { selector: 'button' });
+    expect(button).toBeTruthy();
   });
   it('render secondary button with custom inner text', () => {
+    const innerTextButton = 'any string';
     render(<ModalContainer secondaryBtnName={'any string'} />);
-    const button = screen.queryByTestId('secondary');
-    expect(button).toHaveTextContent('any string');
+    const button = screen.getByText(innerTextButton, { selector: 'button' });
+    expect(button).toBeTruthy();
   });
   it('render a custom modal body', async () => {
     function Elem() {

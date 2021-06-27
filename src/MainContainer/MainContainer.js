@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import DailyClass from "./DailyClass/DailyClass";
 import ListContainer from "./ListContainer/ListContainer";
+import Survey from "./Survey/Survey";
 import DailyClassSurvey from "./DailyClassSurvey/DailyClassSurvey";
 import ClassFeelings from "./ClassFeelings/ClassFeelings";
 import Button from "./button1/button";
@@ -16,6 +17,7 @@ import {
   trainerById1,
   listHomework,
   studentsByTraining,
+  votes,
 } from "../sampleData";
 
 export default function MainContainer() {
@@ -60,7 +62,11 @@ export default function MainContainer() {
         secondaryBtnName={"Cerrar"}
       />
       <div className="DailyClassSurvey">
-        <DailyClassSurvey dailyScheduleData={dailyScheduleData} />
+        <Survey
+          classVotes={votes}
+          isTrainer={isTrainer}
+          dailyScheduleData={dailyScheduleData}
+        />
       </div>
     </div>
   );

@@ -1,25 +1,30 @@
-import React from 'react'; 
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import MainContainer from './MainContainer/MainContainer';
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
-import AgendaModal from './AgendaModal/AgendaModal';
-import ModalContainer from './ModalContainer/ModalContainer';
+
+function UnderConstruction() {
+  return (
+    <div className="myProfile">
+      <h1 className="myProfile__title">Talent G</h1>
+      <p className="myProfile__subtitle">Under Construction</p>
+    </div>
+  )
+}
 
 function App() {
-
   return (
     <Router>
       <div className="App">
-        <Header></Header>
+        <Header />
         <Switch>
-          <Route exact path='/' component={MainContainer}/>
-          <Route path='/homeworkFeedback' component={HomeworkFeedback}/> 
-          {/* line 14, that path just is a test */}
-        </Switch> 
-        <Footer></Footer>
+          <Route exact path='/' component={MainContainer} />
+          <Route path='/myProfile' component={UnderConstruction} />
+        </Switch>
+        <Footer />
       </div>
     </Router>
   );

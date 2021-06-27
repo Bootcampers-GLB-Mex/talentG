@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 import './editModal.css';
 
@@ -13,8 +14,8 @@ export default function EditModalBody({ day, topicTitle, summary, trainers }) {
     return (
         <>
             <h3 className="editModal__title">Agenda</h3>
-            <p className="editModal__subtitle">Día {day} - {topicTitle}</p>
-            <form>
+            <p className="editModal__subtitle" data-testid="editSubTitle">Día {day} - {topicTitle}</p>
+            <form data-testid="form">
                 <textarea
                     className="editModal__textArea"
                     name="edit"
@@ -35,4 +36,17 @@ export default function EditModalBody({ day, topicTitle, summary, trainers }) {
             </form>
         </>
     );
+}
+
+EditModalBody.propTypes = {
+    day: PropTypes.number,
+    topicTitle: PropTypes.string,
+    summary: PropTypes.array,
+    trainers: PropTypes.array
+}
+EditModalBody.defaultProps = {
+    day: 1,
+    topicTitle: "CSS - Default",
+    summary: ["Default Value"],
+    trainers: ["Miguel", "Juan", "Rubén"]
 }

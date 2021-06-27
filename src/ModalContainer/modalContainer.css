@@ -53,6 +53,14 @@
   background-color: #4b4eff;
 }
 
+.modalContainer__primary:hover {
+  background-color: #3538d1;
+}
+
 .modalContainer__secondary {
   background-color: #7c8089;
+}
+
+.modalContainer__secondary:hover {
+  background-color: #747a8a;
 }

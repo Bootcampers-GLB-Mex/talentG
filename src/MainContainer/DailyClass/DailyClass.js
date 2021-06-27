@@ -4,13 +4,16 @@ import { useState } from 'react';
 import TopicList from './TopicList';
 import ResourcesList from './ResourcesList';
 import ModalContainer from '../../ModalContainer/ModalContainer';
-import EditModalBody from './EditModalBody';
+import EditModalBody from '../../EditAgendaByDay/EditModalBody';
+import OptionsModalBody from './OptionsModalBody';
 
 import './dailyClass.css';
 
 export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
 
     const [showEdit, setShowEdit] = useState(false);
+    const [showOptions, setShowOptions] = useState(false);
+    const [showTrainer, setShowTrainer] = useState(false);
     const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
     const dailyImage = {
         src: "/assets/img/daily-class-1.png",
@@ -38,6 +41,14 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
         setShowEdit(() => !showEdit);
     }
 
+    function toggleOptions() {
+        setShowOptions(() => !showOptions);
+    }
+
+    function toggleTrainer() {
+        setShowTrainer(() => !showTrainer);
+    }
+
     return (
         <>
             <section className="dailyClass">
@@ -55,30 +66,46 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
                         <img className="dailyClass__image" src={process.env.PUBLIC_URL + dailyImage.src} alt={dailyImage.alt}></img>
                         <figcaption hidden>{dailyImage.caption}</figcaption>
                     </figure>
-                    <p className="dailyClass__trainer">Trainer: <a href="/">{trainer.firstName + trainer.lastName}</a></p>
+                    <p className="dailyClass__trainer" onClick={toggleTrainer}>Trainer:{trainer.firstName + trainer.lastName}</p>
                 </div>
                 {isTrainer &&
                     <>
-                        <button className="dailyClass__options"><img src={process.env.PUBLIC_URL + "/assets/img/options.png"} alt=""></img></button>
+                        <button className="dailyClass__options" onClick={toggleOptions}>
+                            <img src={process.env.PUBLIC_URL + "/assets/img/options.png"} alt="" />
+                        </button>
                         <button className="dailyClass__edit" onClick={toggleEdit}>Editar</button>
                     </>
                 }
             </section>
             {isTrainer &&
-                <ModalContainer
-                    children={
-                        <EditModalBody
-                            day={dailyScheduleData.day}
-                            topicTitle={dailyScheduleData.topic}
-                            summary={dailyScheduleData.summary}
-                            trainers={trainers}
-                        />}
-                    show={showEdit}
-                    handleClose={toggleEdit}
-                    handlePrimary={() => alert("clicked send Daily class edit")}
-                    primaryBtnName={"Guardar"}
-                    secondaryBtnName={"Cerrar"}
-                />}
+                <>
+                    <ModalContainer
+                        children={
+                            <EditModalBody
+                                day={dailyScheduleData.day}
+                                topicTitle={dailyScheduleData.topic}
+                                summary={dailyScheduleData.summary}
+                                trainers={trainers}
+                            />}
+                        show={showEdit}
+                        handleClose={toggleEdit}
+                        handlePrimary={() => alert("clicked send Daily class edit")}
+                        primaryBtnName={"Guardar"}
+                        secondaryBtnName={"Cerrar"}
+                    />
+                    <ModalContainer
+                        children={<OptionsModalBody />}
+                        show={showOptions}
+                        handleClose={toggleOptions}
+                        handlePrimary={() => alert("Clicked save options")}
+                        primaryBtnName={""}
+                        secondaryBtnName={"Cerrar"}
+                    />
+                </>
+            }
+            <ModalContainer
+                show={showTrainer}
+                handleClose={toggleTrainer} />
         </>
     );
 }

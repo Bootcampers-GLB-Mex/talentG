@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
+
 import "./listContainer.css";
 
 import ListContent from "../ListContent/ListContent";
@@ -43,7 +45,7 @@ ListContainer.propTypes = {
   }),
   students: PropTypes.shape({
       id: PropTypes.number,
-      email: PropTypes.email,
+      email: PropTypes.string,
       firstName: PropTypes.string,
       lastName: PropTypes.string,
       location: PropTypes.string,

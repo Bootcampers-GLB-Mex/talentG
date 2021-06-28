@@ -1,28 +1,70 @@
-.ContainerButtons{
-    display: flex;
-    flex-direction: column;
-    grid-column-start: 2;
-    grid-row: 3/6;
-    justify-content: space-around;
-  }
-.MainContainer{
-    display: grid;
-    grid-template-columns: 5% 30% 40% 40% 10%;
-    grid-template-rows: 15% 40% 22% 20% 10%;
+.MainContainer {
+  display: flex;
+  flex-direction: row;
+  padding-top: 5rem;
+  padding-left: 2.75rem;
+  /* overflow: scroll; */
+  padding-right: 3.5rem;
+  /* margin-bottom: 4rem; */
+  overflow-y: scroll;
+}
+
+.CardContainer {
+  margin-bottom: 2rem;
+}
+
+.MainContainer__left {
+  padding-right: 1.59rem;
+}
+.MainContainer__right {
+  padding-left: 3.59rem;
+}
+
+.ContainerButtons {
+  display: flex;
+  flex-direction: column;
+}
+
+.BottomContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.ListContainer {
+  width: 28.5rem;
+  margin-bottom: 1.8rem;
+}
+
+.DailyClass {
+  /* width: 1008px; */
+  /* height: 20rem; */
+}
+
+/* .ContainerButtons {
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 2;
+  grid-row: 3/6;
+  justify-content: space-around;
+}
+.MainContainer {
+  display: grid;
+  grid-template-columns: 2.75rem 17.56rem 3.18rem 63rem 3.5rem;
+  grid-template-rows: 15% 40% 22% 20% 10%;
 }
 .Card {
   grid-column-start: 2;
   grid-row-start: 2;
 }
-.DailyClass{
+.DailyClass {
   grid-column: 3/5;
   grid-row-start: 2;
 }
-.ListContainer{
+.ListContainer {
   grid-column-start: 3;
   grid-row-start: 4;
 }
 .DailyClassSurvey {
   grid-column-start: 4;
   grid-row-start: 4;
-}
+} */

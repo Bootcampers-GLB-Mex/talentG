@@ -9,6 +9,7 @@ import Button from "./button1/button";
 import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import EditarPerfil from "./button1/EditarPerfil";
+import AgendaModal from "../AgendaModal/AgendaModal";
 
 import "./MainContainer.css";
 
@@ -27,8 +28,12 @@ export default function MainContainer() {
   const [homeworks] = useState(listHomework);
   const [students] = useState(studentsByTraining);
   const [showEditProfile, setshowEditProfile] = useState(false);
+  const [showAgenda, setshowAgenda] = useState(false);
   function handleEditProfile() {
     setshowEditProfile(!showEditProfile);
+  }
+  function handleAgenda() {
+    setshowAgenda(!showAgenda);
   }
 
   return (
@@ -50,9 +55,17 @@ export default function MainContainer() {
       </div>
       <div className="ContainerButtons">
         <Button children="Editar Perfil" onClick={handleEditProfile}></Button>
-        <Button children="Ver Agenda"></Button>
+        <Button children="Ver Agenda" onClick={handleAgenda}></Button>
         <Button children="Ver Feedback"></Button>
       </div>
+      <ModalContainer
+        children={<AgendaModal />}
+        show={showAgenda}
+        handlePrimary={() => alert("clicked editar perfil")}
+        handleClose={handleAgenda}
+        primaryBtnName={"Guardar"}
+        secondaryBtnName={"Cerrar"}
+      />
       <ModalContainer
         children={<EditarPerfil />}
         show={showEditProfile}

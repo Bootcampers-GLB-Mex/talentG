@@ -16,7 +16,7 @@ import { currentSchedule, trainerById1, listHomework, studentsByTraining } from 
 
 export default function MainContainer() {
     const [dailyScheduleData] = useState(currentSchedule);
-    const [isTrainer] = useState(false);
+    const [isTrainer] = useState(true);
     const [trainer] = useState(trainerById1);
     const [homeworks] = useState(listHomework);
     const [students] = useState(studentsByTraining);

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import PropTypes from 'prop-types';
+import React from "react";
 import "./listContainer.css";
 
-import ListContent from "../ListContent/ListContent";
+import ListContent from "./ListContent";
 
 export default function ListContainer({ isTrainer, homeworks, students}) {
   
@@ -43,7 +44,7 @@ ListContainer.propTypes = {
   }),
   students: PropTypes.shape({
       id: PropTypes.number,
-      email: PropTypes.email,
+      email: PropTypes.string,
       firstName: PropTypes.string,
       lastName: PropTypes.string,
       location: PropTypes.string,

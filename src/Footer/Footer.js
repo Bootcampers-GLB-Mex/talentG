@@ -1,10 +1,14 @@
-import React from 'react';
-import './footer-styles.css';
+import React from "react";
+import "./footer-styles.css";
 
 export default function Footer() {
-    return (
+  return (
     <footer>
-        <img className="globant__img" src={process.env.PUBLIC_URL + '/assets/img/globant.png'} alt="logo"/>
+      <img
+        className="globant-img"
+        src={process.env.PUBLIC_URL + "/assets/img/globant.png"}
+        alt="logo"
+      />
     </footer>
-    )
+  );
 }

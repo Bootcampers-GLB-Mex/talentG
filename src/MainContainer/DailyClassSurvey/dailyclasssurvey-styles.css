@@ -1,11 +1,3 @@
-.dailyClassSurvey {
-  padding: 1.6rem 2.4rem;
-  max-width: 29rem;
-  min-height: 13rem;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
 .dailyClassSurvey__contentTop {
   margin-bottom: 1rem;
 }
@@ -19,4 +11,12 @@
   display: flex;
   justify-content: space-around;
   margin: 1rem;
+}
+
+.dailyClassSurvey__contentBottom img {
+  cursor: pointer;
+}
+
+.voteDone {
+  text-align: center;
 }

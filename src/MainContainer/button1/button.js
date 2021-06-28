@@ -2,9 +2,9 @@ import React from "react";
 import "./button.css";
 
 
-export const Button = ({children, onClick}) =>{
+export const Button = ({children, handleEven}) =>{
     return (
-        <button className="button1" onClick= {onClick} >
+        <button className="button1" onClick= {handleEven} >
             <span>
             {children}
             </span>

@@ -20,18 +20,22 @@ export default function EditarPerfil() {
 
     return (
         <>
+            <div className="editarperfil1">
             <h3 className="editperfil">Perfil</h3>
             <p className="editfoto">Foto</p>
             <div className= 'image-container'>
                     <img scr={foto} alt='' height="100px" width ="100px"/> 
                 </div>
+            <div className="form1">
             <form>
                 <label>
                     Nombre:
-                    <input type="text" value={name} 
-                    onChange ={handleName}/>
+                    <div className="name1">
+                        <input type="text" value={name} 
+                        onChange ={handleName}/>
+                    </div>
                 </label>
-                <label>
+                <label className="last1">
                     Apellido:
                     <input type="text" value={lastName} 
                     onChange ={handlelastName}/>
@@ -47,6 +51,8 @@ export default function EditarPerfil() {
                     onChange={handleInput}>
                 </textarea>
             </form>
+            </div>
+            </div>
         </>
     );
 }

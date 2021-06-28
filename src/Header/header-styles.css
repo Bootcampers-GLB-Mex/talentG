@@ -31,4 +31,9 @@ header{
     color: #FFFFFF;
     margin-top: 2.2%;
     margin-left: 2%;
+    text-decoration: none;
+}
+
+.my__bootcamp:hover, .my__profile:hover{
+    text-decoration: underline;
 }

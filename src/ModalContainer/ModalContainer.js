@@ -23,8 +23,7 @@ export default function ModalContainer({
                 <button
                     className="modalContainer__secondary"
                     title={secondaryBtnName}
-                    onClick={handleClose}
-                    data-testid="secondary">
+                    onClick={handleClose}>
                     {secondaryBtnName}
                 </button>
             </div>

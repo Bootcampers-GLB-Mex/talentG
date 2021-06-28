@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 import PropTypes from 'prop-types';
 import React from "react";
+=======
+import React from "react";
+import PropTypes from 'prop-types';
+
+>>>>>>> 595e7055c03d746549525b125fe44ea756570b81
 import "./listContainer.css";
 
 import ListContent from "./ListContent";

@@ -5,7 +5,8 @@ import './editModal.css';
 
 export default function EditModalBody({ day, topicTitle, summary, trainers }) {
 
-    const [textValue, setTextValue] = useState(summary.join(" "));
+    // const [textValue, setTextValue] = useState(summary ? summary.join(" ") : "");
+    const [textValue, setTextValue] = useState(summary ? summary : "");
 
     function handleInput(e) {
         setTextValue(e.target.value);
@@ -43,4 +44,11 @@ EditModalBody.propTypes = {
     topicTitle: PropTypes.string,
     summary: PropTypes.array,
     trainers: PropTypes.array
+}
+
+EditModalBody.defaultProps = {
+    day: 1,
+    topicTitle: "Prueba - CSS",
+    summary: ["1. Example", "2. Example", "3.Example"],
+    trainers: ["Mike", "Juan", "Rubén"]
 }

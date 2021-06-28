@@ -18,9 +18,10 @@ function App() {
         <Switch>
           <Route exact path='/' component={MainContainer}/>
           <Route path='/homeworkFeedback' component={HomeworkFeedback}/> 
+          <Route path='/agenda' component={AgendaModal}/> 
           {/* line 14, that path just is a test */}
         </Switch> 
-        <Footer></Footer>
+        {/* <Footer></Footer> */}
       </div>
     </Router>
   );

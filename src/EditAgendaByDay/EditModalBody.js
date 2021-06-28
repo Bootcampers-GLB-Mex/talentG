@@ -15,8 +15,8 @@ export default function EditModalBody({ day, topicTitle, summary, trainers }) {
     return (
         <>
             <h3 className="editModal__title">Agenda</h3>
-            <p className="editModal__subtitle">Día {day} - {topicTitle}</p>
-            <form>
+            <p className="editModal__subtitle" data-testid="editSubTitle">Día {day} - {topicTitle}</p>
+            <form data-testid="form">
                 <textarea
                     className="editModal__textArea"
                     name="edit"
@@ -45,10 +45,9 @@ EditModalBody.propTypes = {
     summary: PropTypes.array,
     trainers: PropTypes.array
 }
-
 EditModalBody.defaultProps = {
     day: 1,
-    topicTitle: "Prueba - CSS",
-    summary: ["1. Example", "2. Example", "3.Example"],
-    trainers: ["Mike", "Juan", "Rubén"]
+    topicTitle: "CSS - Default",
+    summary: ["Default Value"],
+    trainers: ["Miguel", "Juan", "Rubén"]
 }

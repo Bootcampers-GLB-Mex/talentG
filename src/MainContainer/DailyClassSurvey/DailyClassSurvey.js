@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./dailyclasssurvey-styles.css";
 
-export default function DailyClassSurvey() {
+export default function DailyClassSurvey(props) {
+  const { dailyScheduleData } = props;
   // State temporal
   const [count, setCount] = useState(0);
   return (
-    <section className="dailyClassSurvey">
+    <>
       <div className="dailyClassSurvey__contentTop">
         {/* La info de H1 se va a capturar */}
-        <h1>Día 1 - CSS Survey {count}</h1>
+        <h1>
+          Día {dailyScheduleData.day} - {dailyScheduleData.topic} Survey
+        </h1>
       </div>
       <div className="dailyClassSurvey__contentBottom">
         <img
@@ -22,6 +26,21 @@ export default function DailyClassSurvey() {
           onClick={() => setCount(count - 1)}
         />
       </div>
-    </section>
+      {count != 0 && (
+        <>
+          <div className="voteDone">
+            <p>Gracias por votar!</p>
+          </div>
+        </>
+      )}
+    </>
   );
 }
+
+DailyClassSurvey.propTypes = {
+  dailyScheduleData: PropTypes.shape({
+    day: PropTypes.number,
+    id: PropTypes.number,
+    topic: PropTypes.string,
+  }),
+};

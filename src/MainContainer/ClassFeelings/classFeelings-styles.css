@@ -1,0 +1,32 @@
+.feelings-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.feelings-info span:last-child {
+  color: #353638;
+}
+
+.feelings-percentage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 0.5rem;
+}
+
+.feelings-percentage__chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feelings-percentage__chart h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.feelings-percentage__chart img {
+  width: 66.67px;
+  height: 66.67px;
+}

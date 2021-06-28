@@ -49,12 +49,12 @@ export default function MainContainer() {
         />
       </div>
       <div className="ContainerButtons">
-        <Button children="Editar Perfil" onClick={handleEditProfile}></Button>
+        <Button children="Editar Perfil" handleEvent={handleEditProfile}></Button>
         <Button children="Ver Agenda"></Button>
         <Button children="Ver Feedback"></Button>
       </div>
       <ModalContainer
-        children={<EditarPerfil />}
+        children={<EditarPerfil/>}
         show={showEditProfile}
         handlePrimary={() => alert("clicked editar perfil")}
         handleClose={handleEditProfile}

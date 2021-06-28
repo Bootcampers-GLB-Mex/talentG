@@ -3,12 +3,11 @@ import { useState } from "react";
 import DailyClass from "./DailyClass/DailyClass";
 import ListContainer from "./ListContainer/ListContainer";
 import Survey from "./Survey/Survey";
-import DailyClassSurvey from "./DailyClassSurvey/DailyClassSurvey";
-import ClassFeelings from "./ClassFeelings/ClassFeelings";
 import Button from "./button1/button";
 import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import EditarPerfil from "./button1/EditarPerfil";
+import AgendaModal from '../AgendaModal/AgendaModal';
 
 import "./MainContainer.css";
 
@@ -18,6 +17,7 @@ import {
   listHomework,
   studentsByTraining,
   votes,
+  scheduleByBootcamp
 } from "../sampleData";
 
 export default function MainContainer() {
@@ -27,8 +27,31 @@ export default function MainContainer() {
   const [homeworks] = useState(listHomework);
   const [students] = useState(studentsByTraining);
   const [showEditProfile, setshowEditProfile] = useState(false);
+  const [showAgenda, setShowAgenda] = useState(false);
+  const [showEditAgenda, setShowEditAgenda] = useState(false);
+  const [isEditable, setIsEditable] = useState(false);
+
+  function toggleEdit(id, day, topic, summary) {
+    setIsEditable(!isEditable);
+    editShowAgenda();
+    console.log("Props: ", id, day, topic, summary);
+    // editShowAgenda(id,day,topic,summary);
+  }
+
   function handleEditProfile() {
     setshowEditProfile(!showEditProfile);
+  }
+
+  function handleShowAgenda() {
+    setShowAgenda(!showAgenda);
+    if (showEditAgenda) {
+      setIsEditable(false);
+      setShowEditAgenda(false);
+    }
+  }
+
+  function editShowAgenda() {
+    setShowEditAgenda(!showEditAgenda);
   }
 
   return (
@@ -38,9 +61,7 @@ export default function MainContainer() {
         <DailyClass
           isTrainer={isTrainer}
           dailyScheduleData={dailyScheduleData}
-          trainer={trainer}
-        />{" "}
-      </div>
+          trainer={trainer} /> </div>
       <div className="ListContainer">
         <ListContainer
           isTrainer={isTrainer}
@@ -50,15 +71,28 @@ export default function MainContainer() {
       </div>
       <div className="ContainerButtons">
         <Button children="Editar Perfil" handleEvent={handleEditProfile}></Button>
-        <Button children="Ver Agenda"></Button>
+        <Button children="Ver Agenda" handleEvent={handleShowAgenda}></Button>
         <Button children="Ver Feedback"></Button>
       </div>
       <ModalContainer
-        children={<EditarPerfil/>}
+        children={<EditarPerfil />}
         show={showEditProfile}
         handlePrimary={() => alert("clicked editar perfil")}
         handleClose={handleEditProfile}
         primaryBtnName={"Guardar"}
+        secondaryBtnName={"Cerrar"}
+      />
+      <ModalContainer
+        children={
+          <AgendaModal
+            isTrainer={isTrainer}
+            schedule={scheduleByBootcamp}
+            isEditable={isEditable}
+            toggleEdit={toggleEdit}
+          />}
+        show={showAgenda}
+        handleClose={handleShowAgenda}
+        primaryBtnName={showEditAgenda ? "Guardar" : ""}
         secondaryBtnName={"Cerrar"}
       />
       <div className="DailyClassSurvey">

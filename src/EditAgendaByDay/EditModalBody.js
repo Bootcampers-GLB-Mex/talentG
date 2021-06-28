@@ -5,7 +5,8 @@ import './editModal.css';
 
 export default function EditModalBody({ day, topicTitle, summary, trainers }) {
 
-    const [textValue, setTextValue] = useState(summary.join(" "));
+    // const [textValue, setTextValue] = useState(summary ? summary.join(" ") : "");
+    const [textValue, setTextValue] = useState(summary ? summary : "");
 
     function handleInput(e) {
         setTextValue(e.target.value);

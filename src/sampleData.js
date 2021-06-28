@@ -141,6 +141,63 @@ export const currentSchedule = {
   id_training: 1,
 };
 
+export const scheduleByBootcamp = [
+    {
+        id : 1,
+        day : 1,
+        topic : "CSS",
+        date : "22-06-2021",
+        summary : "Aprenderemos que es CSS",
+        id_trainer : 1,
+        id_training : 2
+    }, 
+    {
+        id : 2,
+        day : 2,
+        topic : "HTML Semántico",
+        date : "22-06-2021",
+        summary : "Veremos HTML",
+        id_trainer : 2,
+        id_training : 2
+    },
+    {
+        id : 3,
+        day : 3,
+        topic : "Js Basics",
+        date : "23-06-2021",
+        summary : "El día de hoy veremos Js Basics",
+        id_trainer : 1,
+        id_training : 2
+    },
+    {
+        id : 4,
+        day : 4,
+        topic : "CSS",
+        date : "22-06-2021",
+        summary : "Aprenderemos que es CSS",
+        id_trainer : 1,
+        id_training : 2
+    }, 
+    {
+        id : 5,
+        day : 5,
+        topic : "HTML Semántico",
+        date : "22-06-2021",
+        summary : "Veremos HTML",
+        id_trainer : 2,
+        id_training : 2
+    },
+    {
+        id : 6,
+        day : 6,
+        topic : "Js Basics",
+        date : "23-06-2021",
+        summary : "El día de hoy veremos Js Basics",
+        id_trainer : 1,
+        id_training : 2
+    }
+]
+
 /*
  * getVotesInPercentage
  */

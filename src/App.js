@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
+import { api } from './api/apiMock';
 import MainContainer from './MainContainer/MainContainer';
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
@@ -15,19 +16,42 @@ function UnderConstruction() {
   )
 }
 
-function App() {
+function Login({ login }) {
   return (
-    <Router>
+    <>
       <div className="App">
-        <Header />
-        <Switch>
-          <Route exact path='/' component={MainContainer}/>
-          <Route path='/myProfile' component={UnderConstruction} />
-        </Switch>
-        <Footer />
+        <h1 className="login__title">Talent G</h1>
+        <button className="login__button" onClick={login}>Login</button>
       </div>
-    </Router>
+    </>
   );
+}
+
+function App() {
+  const [isLogin, setIsLogin] = useState(true);
+
+  function handleLogin() {
+    setIsLogin(() => {
+      return !isLogin ? api.getLogin() : !isLogin;
+    });
+  }
+
+  return isLogin ?
+    <>
+      <Router>
+        <div className="App">
+          <Header logout={handleLogin} />
+          <Switch>
+            <Route exact path='/'>
+              <MainContainer isLogin={isLogin} />
+            </Route>
+            <Route path='/myProfile' component={UnderConstruction} />
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </>
+    : <Login login={handleLogin} />
 }
 
 export default App;

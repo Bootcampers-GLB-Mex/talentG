@@ -3,10 +3,7 @@
   flex-direction: row;
   padding-top: 5rem;
   padding-left: 2.75rem;
-  /* overflow: scroll; */
   padding-right: 3.5rem;
-  /* margin-bottom: 4rem; */
-  overflow-y: scroll;
 }
 
 .CardContainer {
@@ -29,6 +26,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 1.5rem;
 }
 .ListContainer {
   width: 28.5rem;
@@ -36,8 +34,7 @@
 }
 
 .DailyClass {
-  /* width: 1008px; */
-  /* height: 20rem; */
+  width: 60rem;
 }
 
 /* .ContainerButtons {

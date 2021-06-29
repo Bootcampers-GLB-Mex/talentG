@@ -24,7 +24,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={MainContainer} />
           <Route path="/myProfile" component={UnderConstruction} />
-          <Route path="/agenda" component={AgendaModal} />
         </Switch>
         <Footer />
       </div>

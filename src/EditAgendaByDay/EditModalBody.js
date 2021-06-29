@@ -5,7 +5,8 @@ import './editModal.css';
 
 export default function EditModalBody({ day, topicTitle, summary, trainers }) {
 
-    const [textValue, setTextValue] = useState(summary.join(" "));
+    // const [textValue, setTextValue] = useState(summary ? summary.join(" ") : "");
+    const [textValue, setTextValue] = useState(summary ? summary : "");
 
     function handleInput(e) {
         setTextValue(e.target.value);
@@ -41,7 +42,7 @@ export default function EditModalBody({ day, topicTitle, summary, trainers }) {
 EditModalBody.propTypes = {
     day: PropTypes.number,
     topicTitle: PropTypes.string,
-    summary: PropTypes.array,
+    summary: PropTypes.array || PropTypes.string,
     trainers: PropTypes.array
 }
 EditModalBody.defaultProps = {

@@ -11,4 +11,15 @@
     box-shadow: 0 .5rem 1rem 0 rgba(0,0,0,0.2), 0 .6rem 1.5rem 0 rgba(0,0,0,0.19);
     overflow-y: scroll;
 }
+
+.list__title {
+    margin: 0 2rem 1rem;
+    font-size: 1.5rem;
+}
   
+.list__content {
+    font-size: 0.87rem;
+    list-style-type: none;
+    line-height: 200%;
+    margin: 0 2rem;
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import "./classFeelings-styles.css";
 
@@ -31,10 +31,10 @@ export default function classFeelings(props) {
   );
 }
 
-// classFeelings.propTypes = {
-//   classVotes: PropTypes.shape({
-//     totalVotes: PropTypes.number,
-//     like: PropTypes.number,
-//     dislike: PropTypes.number,
-//   }),
-// };
+classFeelings.propTypes = {
+  classVotes: PropTypes.shape({
+    totalVotes: PropTypes.number,
+    like: PropTypes.number,
+    dislike: PropTypes.number,
+  }),
+};

@@ -26,7 +26,7 @@ export default function DailyClassSurvey(props) {
           onClick={() => setCount(count - 1)}
         />
       </div>
-      {count != 0 && (
+      {count !== 0 && (
         <>
           <div className="voteDone">
             <p>Gracias por votar!</p>

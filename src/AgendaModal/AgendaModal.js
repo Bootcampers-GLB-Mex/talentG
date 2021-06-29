@@ -5,7 +5,7 @@ import EditModalBody from '../EditAgendaByDay/EditModalBody';
 import './agendaModal.css';
 
 function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit, trainers}) {
-{/* EditModalBody recibe day, topicTitle, summary, trainers  */}
+/* EditModalBody recibe day, topicTitle, summary, trainers  */
     const [isSummary, setIsSummary] = useState('');
     const [isDay, setIsDay] = useState('');
     const [isTopic, setIsTopic] = useState('');
@@ -37,10 +37,8 @@ function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit, trainers}) {
                         </div>
                     </>
                 );
-            })
-            }
+            })}
             {/* EditModalBody recibe day, topicTitle, summary, trainers  */}
-            {/* {isEditable && <EditModalBody/>} */}
             {isEditable && <EditModalBody day={isDay} topicTitle={isTopic} summary={isSummary} trainers={trainers}/>}
         </section>
     )

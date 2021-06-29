@@ -1,5 +1,7 @@
 // Sample data with back-end examples.
-
+function getId() {
+  return Math.floor(Math.random() * 100) * Date.now();
+}
 /*
  * Here we assume that the course is already created.
  * It will be assumed that id = 1 is for UI and id = 2 is for Java
@@ -8,7 +10,7 @@
 
 export const studentsByTraining = [
   {
-    id: 1,
+    id: getId(),
     email: "student@students.com",
     firstName: "Alejandra",
     lastName: "Gutierrez",
@@ -18,7 +20,7 @@ export const studentsByTraining = [
     status: true,
   },
   {
-    id: 2,
+    id: getId(),
     email: "student@students.com",
     firstName: "Atziri",
     lastName: "Perez",
@@ -28,7 +30,7 @@ export const studentsByTraining = [
     status: true,
   },
   {
-    id: 3,
+    id: getId(),
     email: "student@students.com",
     firstName: "Gisela",
     lastName: "Camacho",
@@ -38,7 +40,7 @@ export const studentsByTraining = [
     status: true,
   },
   {
-    id: 4,
+    id: getId(),
     email: "student@students.com",
     firstName: "Jorge",
     lastName: "Monterrosas",
@@ -48,7 +50,7 @@ export const studentsByTraining = [
     status: true,
   },
   {
-    id: 5,
+    id: getId(),
     email: "student@students.com",
     firstName: "Talía",
     lastName: "González",
@@ -58,7 +60,7 @@ export const studentsByTraining = [
     status: true,
   },
   {
-    id: 6,
+    id: getId(),
     email: "student@students.com",
     firstName: "Victor",
     lastName: "Cruz",
@@ -73,14 +75,14 @@ export const studentsByTraining = [
  * Read trainer by id(GET) (Status code:200) = /trainers/{idTrainer}
  */
 export const trainerById1 = {
-  id: 1,
+  id: getId(),
   email: "trainer@training.com",
   firstName: "Miguel",
   lastName: "Romero",
   location: "CDMX",
   summary: "Es muy cool",
   training: {
-    id: 1,
+    id: getId(),
     training: "Bootcamp-UI",
     description: "Es muy cool",
     initialDate: "01-06-21",
@@ -89,14 +91,14 @@ export const trainerById1 = {
 };
 
 export const trainerById2 = {
-  id: 2,
+  id: getId(),
   email: "trainer@training.com",
   firstName: "Juan",
   lastName: "Crisóstomo",
   location: "CDMX",
   summary: "Es muy cool",
   training: {
-    id: 1,
+    id: getId(),
     training: "Bootcamp-UI",
     description: "Es muy cool",
     initialDate: "01-06-21",
@@ -105,14 +107,14 @@ export const trainerById2 = {
 };
 
 export const trainerById3 = {
-  id: 2,
+  id: getId(),
   email: "trainer@training.com",
   firstName: "Juan",
   lastName: "Crisóstomo",
   location: "CDMX",
   summary: "Es muy cool",
   training: {
-    id: 1,
+    id: getId(),
     training: "Bootcamp-UI",
     description: "Es muy cool",
     initialDate: "01-06-21",
@@ -125,7 +127,7 @@ export const trainerById3 = {
  */
 
 export const currentSchedule = {
-  id: 1,
+  id: getId(),
   day: 1,
   topic: "CSS",
   date: "01-06-2021",
@@ -143,7 +145,7 @@ export const currentSchedule = {
 
 export const scheduleByBootcamp = [
     {
-        id : 1,
+        id : getId(),
         day : 1,
         topic : "CSS",
         date : "22-06-2021",
@@ -152,7 +154,7 @@ export const scheduleByBootcamp = [
         id_training : 2
     }, 
     {
-        id : 2,
+        id : getId(),
         day : 2,
         topic : "HTML Semántico",
         date : "22-06-2021",
@@ -161,7 +163,7 @@ export const scheduleByBootcamp = [
         id_training : 2
     },
     {
-        id : 3,
+        id : getId(),
         day : 3,
         topic : "Js Basics",
         date : "23-06-2021",
@@ -170,7 +172,7 @@ export const scheduleByBootcamp = [
         id_training : 2
     },
     {
-        id : 4,
+        id : getId(),
         day : 4,
         topic : "CSS",
         date : "22-06-2021",
@@ -179,7 +181,7 @@ export const scheduleByBootcamp = [
         id_training : 2
     }, 
     {
-        id : 5,
+        id : getId(),
         day : 5,
         topic : "HTML Semántico",
         date : "22-06-2021",
@@ -188,7 +190,7 @@ export const scheduleByBootcamp = [
         id_training : 2
     },
     {
-        id : 6,
+        id : getId(),
         day : 6,
         topic : "Js Basics",
         date : "23-06-2021",
@@ -214,7 +216,7 @@ export const votes = {
 
 export const listHomework = [
   {
-    id: 1,
+    id: getId(),
     homeworkName: "Ejercicios CSS",
     feedback: "Buen trabajo, completaste todos los ejercicios a tiempo.",
     homeworkLink: "https://flukeout.github.io/",
@@ -222,7 +224,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 2,
+    id: getId(),
     homeworkName: "Magazine Layout",
     feedback:
       "Buen Trabajo en la revista, se puede mejorar ciertos aspectos en cuanto a la limpieza e identación del código. Puntos buenos: 1. Semántica bien aplicada 2. Estilos funcionan correctamente 3. Diseño responsivo Puntos a mejorar: 1. Limpieza en el código 2. Nombres de clases en estilos",
@@ -232,7 +234,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 3,
+    id: getId(),
     homeworkName: "CodeWars Katas",
     feedback:
       "Buen Trabajo en tus ejercicios, podrías mejorar viendo los siguientes recursos",
@@ -241,7 +243,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 4,
+    id: getId(),
     homeworkName: "Funcion que muestra la estructura del HTML",
     feedback:
       "Buena estructura pero no funcionó como debía. El objetivo de la tarea es que ustedes mismos se den cuenta que el html que hicieron o sus compañeros es complicado de leer por un tercero",
@@ -250,7 +252,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 5,
+    id: getId(),
     homeworkName: "Sliding Puzzle",
     feedback:
       "Buen trabajo, en tus próximos códigos intenta usar programación funcional.",
@@ -259,7 +261,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 6,
+    id: getId(),
     homeworkName: "Calculadora",
     feedback:
       "Buen trabajo, podrías mejorar poniendo nombres de variables con un nombre significativo",
@@ -269,7 +271,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 7,
+    id: getId(),
     homeworkName: "Guess the movie",
     feedback:
       "Buen trabajo, intenta leer la documentación de React para que aprendas más sobre los temas vistos en clase.",
@@ -278,7 +280,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 8,
+    id: getId(),
     homeworkName: "Cambiar componente de Class a Function",
     feedback:
       "Buen trabajo, lee un poco más acerca del ciclo de vida del componente",
@@ -287,7 +289,7 @@ export const listHomework = [
     id_student: 0,
   },
   {
-    id: 9,
+    id: getId(),
     homeworkName: "Proyecto Final - Desarrollo de aplicación",
     feedback:
       "Buen trabajo, tus compañeros y tu lo hicieron muy bien. Procura leer más de trunk based development para que lo apliques en próximos proyectos",

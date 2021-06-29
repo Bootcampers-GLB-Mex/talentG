@@ -3,12 +3,12 @@ import './Card.css'
 
 function Card(){
 
-    const [name,setName] = useState('Alejandra Gutiérrez');
-    const [job,setJob] = useState('Student');
-    const [boot,setBoot] = useState('Bootcamp');
-    const [area,setArea] = useState('Web UI');
-    const [birth,setBirth] = useState('Edad');
-    const [age,setAge] = useState('24');
+    const [name] = useState('Alejandra Gutiérrez');
+    const [job] = useState('Student');
+    const [boot] = useState('Bootcamp');
+    const [area] = useState('Web UI');
+    const [birth] = useState('Edad');
+    const [age] = useState('24');
 
 
     return(

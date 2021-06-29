@@ -10,7 +10,7 @@ export default function ListContent({list, title}) {
             <h1 className="list__title" data-testid="titlelist">{title}</h1>
             <ol className="list__content" data-testid="contentlist">
                 {Array.isArray(list) && list.map((item) =>
-                    <li key={item}><a>{item}</a></li>
+                    <li key={item}><a href="/">{item}</a></li>
                 )}
             </ol>
         </section>

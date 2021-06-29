@@ -16,7 +16,7 @@ export default function ListContainer({ isTrainer, homeworks, students}) {
 
 
   return (
-    <section className="listContainer">
+    <section className="listContainer" data-testid="listContainer">
       {isTrainer && (
         <>
           <ListContent list={nameStudents} title = "Mis Alumnos" />

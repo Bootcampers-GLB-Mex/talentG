@@ -3,16 +3,15 @@ import React from "react";
 
 import './listContainer.css';
 
-export default function ListContent(props) {
-    const { list, title} = props;
+export default function ListContent({list, title}) {
 
     return (
         <section>
             <h1 className="list__title" data-testid="titlelist">{title}</h1>
             <ol className="list__content" data-testid="contentlist">
-                {list.map((item) => {
-                    return <li key={item}>{item}</li>
-                })}
+                {Array.isArray(list) && list.map((item) =>
+                    <li key={item}><a>{item}</a></li>
+                )}
             </ol>
         </section>
     );
@@ -21,4 +20,9 @@ export default function ListContent(props) {
 ListContent.propTypes = {
     title: PropTypes.string,
     list: PropTypes.arrayOf(PropTypes.string)
+}
+
+ListContent.defaultProps = {
+    title: "Mis alumnos",
+    list: ["Victor Cruz", "Atziri Pérez"]
 }

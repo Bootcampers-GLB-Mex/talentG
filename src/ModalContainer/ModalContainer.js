@@ -11,6 +11,9 @@ export default function ModalContainer({
             data-testid="modalContainer">
             <div className="modalContainer__overlay" onClick={handleClose}></div>
             <div className="modalContainer__content" data-testid="modalContent">
+                <div className="modalContainer__closeContainer">
+                    <button className="modalContainer__closeBtn" onClick={handleClose}>&times;</button>
+                </div>
                 {children}
                 {primaryBtnName &&
                     <button

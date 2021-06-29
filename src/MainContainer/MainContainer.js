@@ -38,13 +38,48 @@ export default function MainContainer() {
 
   return (
     <div className="MainContainer">
-      <Card />
+      <div className="MainContainer__left">
+        <div className="CardContainer">
+          <Card />
+        </div>
+        <div className="ContainerButtons">
+          <Button children="Editar Perfil" onClick={handleEditProfile}></Button>
+          <Button children="Ver Agenda"></Button>
+          <Button children="Ver Feedback"></Button>
+        </div>
+      </div>
+      <div className="MainContainer__right">
+        <div className="DailyClass">
+          <DailyClass
+            isTrainer={isTrainer}
+            dailyScheduleData={dailyScheduleData}
+            trainer={trainer}
+          />
+        </div>
+        <div className="BottomContainer">
+          <div className="ListContainer">
+            <ListContainer
+              isTrainer={isTrainer}
+              homeworks={homeworks}
+              students={students}
+            />
+          </div>
+          <div className="DailyClassSurvey">
+            <Survey
+              classVotes={votes}
+              isTrainer={isTrainer}
+              dailyScheduleData={dailyScheduleData}
+            />
+          </div>
+        </div>
+      </div>
+      {/* <Card />
       <div className="DailyClass">
         <DailyClass
           isTrainer={isTrainer}
           dailyScheduleData={dailyScheduleData}
           trainer={trainer}
-        />{" "}
+        />
       </div>
       <div className="ListContainer">
         <ListContainer
@@ -80,7 +115,7 @@ export default function MainContainer() {
           isTrainer={isTrainer}
           dailyScheduleData={dailyScheduleData}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

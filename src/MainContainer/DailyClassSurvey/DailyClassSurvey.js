@@ -22,7 +22,7 @@ export default function DailyClassSurvey(props) {
         />
         <img
           src={process.env.PUBLIC_URL + "/assets/img/thumb-down.svg"}
-          alt="thumbs-up"
+          alt="thumbs-down"
           onClick={() => setCount(count - 1)}
         />
       </div>

@@ -5,11 +5,11 @@ import TopicList from './TopicList';
 import ResourcesList from './ResourcesList';
 import ModalContainer from '../../ModalContainer/ModalContainer';
 import EditModalBody from '../../EditAgendaByDay/EditModalBody';
-import OptionsModalBody from './OptionsModalBody';
+import OptionsModalBody from '../../OptionModal/OptionsModalBody';
 
 import './dailyClass.css';
 
-export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
+export default function DailyClass({ isTrainer, dailyScheduleData, trainer, trainers }) {
 
     const [showEdit, setShowEdit] = useState(false);
     const [showOptions, setShowOptions] = useState(false);
@@ -35,7 +35,6 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer }) {
         },
     ];
 
-    const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
     function toggleEdit() {
         setShowEdit(() => !showEdit);

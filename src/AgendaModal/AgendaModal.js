@@ -4,7 +4,7 @@ import EditModalBody from '../EditAgendaByDay/EditModalBody';
 
 import './agendaModal.css';
 
-function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit}) {
+function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit, trainers}) {
 {/* EditModalBody recibe day, topicTitle, summary, trainers  */}
     const [isSummary, setIsSummary] = useState('');
     const [isDay, setIsDay] = useState('');
@@ -21,7 +21,7 @@ function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit}) {
                         <div className="tab" key={elem.id}>
                             <input id={`tab-${elem.day}`} type="checkbox"/>
                             <div className="tab__img">
-                                <label for={`tab-${elem.day}`}>Dia {elem.day} - {elem.topic}</label>
+                                <label htmlFor={`tab-${elem.day}`}>Dia {elem.day} - {elem.topic}</label>
                                 { isTrainer && 
                                     <img className="img__pencil" src={process.env.PUBLIC_URL + '/assets/img/pencil.png'} 
                                         alt="pencil"
@@ -33,7 +33,7 @@ function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit}) {
                                             // setIsTrainer(elem.trainers);
                                             }}/> }
                             </div>
-                            <p class="tab-content">{elem.summary}</p>
+                            <p className="tab-content">{elem.summary}</p>
                         </div>
                     </>
                 );
@@ -41,7 +41,7 @@ function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit}) {
             }
             {/* EditModalBody recibe day, topicTitle, summary, trainers  */}
             {/* {isEditable && <EditModalBody/>} */}
-            {isEditable && <EditModalBody day={isDay} topicTitle={isTopic} summary={isSummary}/>}
+            {isEditable && <EditModalBody day={isDay} topicTitle={isTopic} summary={isSummary} trainers={trainers}/>}
         </section>
     )
 }

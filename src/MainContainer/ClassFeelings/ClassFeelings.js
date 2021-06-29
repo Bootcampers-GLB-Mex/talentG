@@ -31,10 +31,10 @@ export default function classFeelings(props) {
   );
 }
 
-// classFeelings.propTypes = {
-//   classVotes: PropTypes.shape({
-//     totalVotes: PropTypes.number,
-//     like: PropTypes.number,
-//     dislike: PropTypes.number,
-//   }),
-// };
+classFeelings.propTypes = {
+  classVotes: PropTypes.shape({
+    totalVotes: PropTypes.number,
+    like: PropTypes.number,
+    dislike: PropTypes.number,
+  }),
+};

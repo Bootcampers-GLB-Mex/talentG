@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 import PropTypes from 'prop-types';
 import React from "react";
-=======
-import React from "react";
-import PropTypes from 'prop-types';
-
->>>>>>> 595e7055c03d746549525b125fe44ea756570b81
 import "./listContainer.css";
 
 import ListContent from "./ListContent";
@@ -22,7 +16,7 @@ export default function ListContainer({ isTrainer, homeworks, students}) {
 
 
   return (
-    <section className="listContainer">
+    <section className="listContainer" role="region">
       {isTrainer && (
         <>
           <ListContent list={nameStudents} title = "Mis Alumnos" />
@@ -40,22 +34,56 @@ export default function ListContainer({ isTrainer, homeworks, students}) {
 
 ListContainer.propTypes = {
   isTrainer: PropTypes.bool,
-  homeworks: PropTypes.shape({
-      id: PropTypes.number,
-      homeworkName: PropTypes.string,
-      feedback: PropTypes.string,
-      homeworkLink: PropTypes.string,
-      id_schedule: PropTypes.number,
-      id_student: PropTypes.number
-  }),
-  students: PropTypes.shape({
-      id: PropTypes.number,
-      email: PropTypes.string,
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      location: PropTypes.string,
-      summary: PropTypes.string,
-      training: PropTypes.number,
-      status: PropTypes.bool
-  })
+  homeworks: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    homeworkName: PropTypes.string,
+    feedback: PropTypes.string,
+    homeworkLink: PropTypes.string,
+    id_schedule: PropTypes.number,
+    id_student: PropTypes.number
+  })),
+  students: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string
+  }))
+}
+
+ListContainer.defaultProps = {
+  isTrainer: false,
+  homeworks: [
+    {
+      id: 1,
+      homeworkName: "Ejercicios CSS",
+      feedback: "Buen trabajo, completaste todos los ejercicios a tiempo.",
+      homeworkLink: "https://flukeout.github.io/",
+      id_schedule: 1,
+      id_student: 0,
+    },
+    {
+      id: 2,
+      homeworkName: "Magazine Layout",
+      feedback:
+        "Buen Trabajo en la revista, se puede mejorar ciertos aspectos en cuanto a la limpieza e identación del código. Puntos buenos: 1. Semántica bien aplicada 2. Estilos funcionan correctamente 3. Diseño responsivo Puntos a mejorar: 1. Limpieza en el código 2. Nombres de clases en estilos",
+      homeworkLink:
+        "https://codesandbox.io/s/strange-microservice-3bhbf?file=/styles.css",
+      id_schedule: 2,
+      id_student: 0,
+    }
+  ],
+  students: [{
+    id: 1,
+    firstName: "Alejandra",
+    lastName: "Gutierrez"
+  },  
+  {
+    id: 2,
+    email: "student@students.com",
+    firstName: "Atziri",
+    lastName: "Perez",
+    location: "CDMX",
+    summary: "Es muy cool",
+    training: 1,
+    status: true,
+  }]
 }

@@ -6,7 +6,7 @@ import Survey from "./Survey/Survey";
 import Button from "./button1/button";
 import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
-import EditarPerfil from "./button1/EditarPerfil";
+import EditarPerfil from "../EditProfile/EditarPerfil";
 import AgendaModal from '../AgendaModal/AgendaModal';
 
 import "./MainContainer.css";
@@ -31,6 +31,8 @@ export default function MainContainer() {
   const [showEditAgenda, setShowEditAgenda] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
 
+  const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
+  
   function toggleEdit(id, day, topic, summary) {
     setIsEditable(!isEditable);
     editShowAgenda();
@@ -61,6 +63,7 @@ export default function MainContainer() {
         <DailyClass
           isTrainer={isTrainer}
           dailyScheduleData={dailyScheduleData}
+          trainers={trainers}
           trainer={trainer} /> </div>
       <div className="ListContainer">
         <ListContainer
@@ -89,6 +92,7 @@ export default function MainContainer() {
             schedule={scheduleByBootcamp}
             isEditable={isEditable}
             toggleEdit={toggleEdit}
+            trainers={trainers}
           />}
         show={showAgenda}
         handleClose={handleShowAgenda}

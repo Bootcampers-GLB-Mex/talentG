@@ -9,17 +9,12 @@ import OptionsModalBody from '../../OptionModal/OptionsModalBody';
 
 import './dailyClass.css';
 
-export default function DailyClass({ isTrainer, dailyScheduleData, trainer, trainers }) {
+export default function DailyClass({ isTrainer, dailyScheduleData, trainer, dailyImage, trainers }) {
 
     const [showEdit, setShowEdit] = useState(false);
     const [showOptions, setShowOptions] = useState(false);
     const [showTrainer, setShowTrainer] = useState(false);
     const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
-    const dailyImage = {
-        src: "/assets/img/daily-class-1.png",
-        alt: "Day 1 Bootcamp:CSS",
-        caption: "UI Engineering Studio. Day 1. Bootcamp:CSS"
-    };
     const resources = [
         {
             title: "What is flex?",
@@ -34,7 +29,6 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer, trai
             href: "https://www.w3schools.com/cssref/css_selectors.asp"
         },
     ];
-
 
     function toggleEdit() {
         setShowEdit(() => !showEdit);
@@ -65,7 +59,7 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer, trai
                         <img className="dailyClass__image" src={process.env.PUBLIC_URL + dailyImage.src} alt={dailyImage.alt}></img>
                         <figcaption hidden>{dailyImage.caption}</figcaption>
                     </figure>
-                    <p className="dailyClass__trainer" onClick={toggleTrainer}>Trainer:{trainer.firstName + trainer.lastName}</p>
+                    <p className="dailyClass__trainer" onClick={toggleTrainer}>Trainer: {trainer.firstName + trainer.lastName}</p>
                 </div>
                 {isTrainer &&
                     <>
@@ -128,5 +122,29 @@ DailyClass.propTypes = {
         src: PropTypes.string,
         alt: PropTypes.string,
         caption: PropTypes.string
-    })
+    }),
+    trainers: PropTypes.array
+}
+
+DailyClass.defaultProps = {
+    isTrainer: false,
+    dailyScheduleData: {
+        date: "28-06-21",
+        day: 1,
+        id: 1,
+        id_Trainer: 1,
+        id_training: 1,
+        summary: ["Some summary"],
+        topic: "CSS"
+    },
+    trainer: {
+        firstName: "Miguel",
+        lastName: "Romero"
+    },
+    dailyImage: {
+        src: "/assets/img/daily-class-1.png",
+        alt: "Day 1 Bootcamp:CSS",
+        caption: "UI Engineering Studio. Day 1. Bootcamp:CSS"
+    },
+    trainers: ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"]
 }

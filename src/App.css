@@ -42,22 +42,3 @@
   font-size: 3rem;
   margin-top: 1rem;
 }
-
-.login__title {
-  font-size: 2rem;
-}
-
-.login__button {
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.5rem;
-  background-color: #BED632;
-  border: none;
-  color: white;
-  border-radius: 3px;
-}
-
-.login__button:hover {
-  cursor: pointer;
-  background-color: #b9cf3d;
-}

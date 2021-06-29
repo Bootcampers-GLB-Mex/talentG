@@ -6,6 +6,7 @@ import { api } from './api/apiMock';
 import MainContainer from './MainContainer/MainContainer';
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
+import Login from "./Login/Login";
 
 function UnderConstruction() {
   return (
@@ -16,21 +17,13 @@ function UnderConstruction() {
   )
 }
 
-function Login({ login }) {
-  return (
-    <>
-      <div className="App">
-        <h1 className="login__title">Talent G</h1>
-        <button className="login__button" onClick={login}>Login</button>
-      </div>
-    </>
-  );
-}
-
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
-  function handleLogin() {
+  function handleLogin(mail, password, isTrainer) {
+    console.log(mail);
+    console.log(password);
+    console.log(isTrainer);
     setIsLogin(() => {
       return !isLogin ? api.getLogin() : !isLogin;
     });

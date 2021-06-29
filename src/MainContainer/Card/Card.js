@@ -3,12 +3,12 @@ import './Card.css'
 
 function Card(){
 
-    const [name] = useState('Alejandra Gutiérrez');
-    const [job] = useState('Student');
-    const [boot] = useState('Bootcamp');
-    const [area] = useState('Web UI');
-    const [birth] = useState('Edad');
-    const [age] = useState('24');
+    const [name,setName] = useState('Alejandra Gutiérrez');
+    const [job,setJob] = useState('Student');
+    const [boot,setBoot] = useState('Bootcamp');
+    const [area,setArea] = useState('Web UI');
+    const [birth,setBirth] = useState('Edad');
+    const [age,setAge] = useState('24');
 
 
     return(
@@ -22,8 +22,23 @@ function Card(){
             <div className="lower-container">
                 <h2> { name } </h2>
                 <h4> { job } </h4>
-                <h3> { boot } { birth }</h3>
-                <p> { area } { age } </p>
+                <table className='minitab'>
+                    <thead>
+                        <tr>
+                            <th> <h3> { boot } </h3></th>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <th> <h3>  { birth }</h3> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <p> { area } </p></td>
+                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td> <p> { age } </p></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
             </div>
 
         </div>

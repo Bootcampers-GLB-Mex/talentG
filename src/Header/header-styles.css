@@ -26,17 +26,21 @@ header {
   height: 2.9em;
 }
 
-.my__bootcamp,
-.my__profile {
-  font-family: "Raleway", sans-serif;
-  font-size: 1em;
-  color: #ffffff;
-  /* margin-top: 2.2%; */
-  margin-left: 2%;
-  text-decoration: none;
+.my__bootcamp, .my__profile, .my__bootcamp__logout{
+    font-family: 'Raleway', sans-serif;
+    font-size:1em;
+    color: #FFFFFF;
+    margin-top: 2.2%;
+    margin-left: 2%;
+    text-decoration: none;
 }
 
-.my__bootcamp:hover,
-.my__profile:hover {
-  text-decoration: underline;
+.my__bootcamp__logout {
+    margin-left: auto;
+    margin-right: 15rem;
+}
+
+.my__bootcamp:hover, .my__profile:hover, .my__bootcamp__logout:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }

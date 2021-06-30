@@ -6,7 +6,7 @@
 @font-face {
   font-family: "Raleway";
   font-weight: 600;
-  src: local("Raleway"), url(./fonts/Raleway-Medium.ttf) format("opentype");
+  src: local("Raleway"), url(./fonts/Raleway-SemiBold.ttf) format("opentype");
 }
 
 :root {

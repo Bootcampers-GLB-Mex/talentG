@@ -20,7 +20,7 @@ import {
   scheduleByBootcamp,
 } from "../sampleData";
 
-export default function MainContainer() {
+export default function MainContainer({initialData}) {
   const [dailyScheduleData] = useState(currentSchedule);
   const [isTrainer] = useState(true);
   const [trainer] = useState(trainerById1);
@@ -32,6 +32,8 @@ export default function MainContainer() {
   const [isEditable, setIsEditable] = useState(false);
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
+
+  console.log(initialData);
 
   function toggleEdit(id, day, topic, summary) {
     setIsEditable(!isEditable);

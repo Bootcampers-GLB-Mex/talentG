@@ -36,5 +36,5 @@ classFeelings.propTypes = {
     totalVotes: PropTypes.number,
     like: PropTypes.number,
     dislike: PropTypes.number,
-  }),
+  })
 };

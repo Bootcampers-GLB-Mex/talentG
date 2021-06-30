@@ -2,19 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from "react";
 import "./listContainer.css";
 
-import {instance} from '../../helpers/api.instance';
 
 import ListContent from "./ListContent";
 
 export default function ListContainer({ isTrainer, homeworks, students}) {
-  useEffect(() => {
-    instance.get("/student/filter_by/training/1",{})
-      .then((res)=>{
-        console.log(`Respuesta inicial: ${JSON.stringify(res)}`)
-      }).catch((e)=>{
-        console.log(e);
-      })
-  }, [])
+
 
   const namehomeworks = homeworks.map(function(hw){
     return hw.homeworkName;

@@ -32,8 +32,11 @@ export default function MainContainer({ initialData, isTrainer }) {
     name: `${initialData.firstName} ${initialData.lastName}`,
     location: initialData.location,
     bootcamp: initialData.training.trainingName,
-    trainer: isTrainer
+    trainer: isTrainer,
+    summary: initialData.summary
   });
+
+  const [scheduleByTraining, setScheduleByTraining] = useState(scheduleByBootcamp);
   const [dailyScheduleData, setDailyScheduleData] = useState(currentSchedule);
   const [trainer] = useState(trainerById1);
   const [homeworks, setHomeworks] = useState(listHomework);
@@ -46,7 +49,12 @@ export default function MainContainer({ initialData, isTrainer }) {
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
   function handleSchedule(res) {
+    const daily = res[0];
     setDailyScheduleData((prev) => ({
+      ...prev,
+      ...daily
+    }));
+    setScheduleByTraining((prev)=>({
       ...prev,
       ...res
     }));
@@ -70,7 +78,8 @@ export default function MainContainer({ initialData, isTrainer }) {
 
     axios(config)
       .then(((response) => {
-        handleSchedule(response.data.content[0]);
+        handleSchedule(response.data.content);
+        console.log(response.data.content)
         setLoading(false);
       }))
       .catch(function (error) {
@@ -78,10 +87,7 @@ export default function MainContainer({ initialData, isTrainer }) {
       });
   }
 
-  useEffect(() => {
-    const trainingId = 1;
-    getTraining(trainingId);
-
+  function getStudentsByTraining(trainingId){
     let config = {
       method: 'get',
       url: `${ENDPOINT}/student/filter_by/training/${trainingId}`,
@@ -99,13 +105,17 @@ export default function MainContainer({ initialData, isTrainer }) {
       .catch(function (error) {
         console.log(error);
       });
+  }
+
+  useEffect(() => {
+    const trainingId = 1;
+    getTraining(trainingId);
+    getStudentsByTraining(trainingId);
   }, [])
 
-  function toggleEdit(id, day, topic, summary) {
+  function toggleEdit() {
     setIsEditable(!isEditable);
     editShowAgenda();
-    // console.log("Props: ", id, day, topic, summary);
-    // editShowAgenda(id,day,topic,summary);
   }
 
   function handleEditProfile() {
@@ -126,6 +136,11 @@ export default function MainContainer({ initialData, isTrainer }) {
 
   function editShowAgenda() {
     setShowEditAgenda(!showEditAgenda);
+  }
+  console.log(scheduleByTraining);
+
+  function sendAgenda(data) {
+    console.log(data);
   }
 
   return (
@@ -170,7 +185,9 @@ export default function MainContainer({ initialData, isTrainer }) {
         </div>
       </div>
       <ModalContainer
-        children={<EditarPerfil />}
+        children={<EditarPerfil 
+          profileData = {profileData} 
+        />}
         show={showEditProfile}
         handlePrimary={() => alert("clicked editar perfil")}
         handleClose={handleEditProfile}
@@ -181,10 +198,11 @@ export default function MainContainer({ initialData, isTrainer }) {
         children={
           <AgendaModal
             isTrainer={isTrainer}
-            schedule={scheduleByBootcamp}
+            schedule={scheduleByTraining}
             isEditable={isEditable}
             toggleEdit={toggleEdit}
             trainers={trainers}
+            handlePrimary={(data)=>sendAgenda(data)}
           />
         }
         show={showAgenda}

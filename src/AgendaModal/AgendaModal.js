@@ -12,10 +12,14 @@ function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit, trainers}) {
     // const [isTrainer, setIsTrainer] = useState('');
     // const getSummary = isSummary();
 
+    const scheduleArr = Object.keys(schedule).map((key) => {
+        return schedule[key];
+    });
+
     return (
         <section className="agenda__modal">
             {!isEditable && <h2 className="agenda__modal--title">Agenda</h2>}
-            {!isEditable && schedule.map((elem)=>{
+            {!isEditable && scheduleArr.map((elem)=>{
                 return(
                     <>
                         <div className="tab" key={elem.id}>
@@ -26,7 +30,7 @@ function AgendaModal({isTrainer, schedule, isEditable ,toggleEdit, trainers}) {
                                     <img className="img__pencil" src={process.env.PUBLIC_URL + '/assets/img/pencil.png'} 
                                         alt="pencil"
                                         onClick={() => {
-                                            toggleEdit(elem.id, elem.day, elem.topic, elem.summary); 
+                                            toggleEdit(); 
                                             setIsSummary(elem.summary);
                                             setIsDay(elem.day);
                                             setIsTopic(elem.topic);

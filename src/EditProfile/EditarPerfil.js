@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import "./editarperfil.css";
 
-export default function EditarPerfil() {
-  const [name, setName] = useState("");
+export default function EditarPerfil({profileData, handleNewData}) {
+  const [name, setName] = useState(profileData.firstName);
   const foto = "";
-  const [lastName, setlastName] = useState("");
-  const [textValue, settextValue] = useState("");
+  const [lastName, setlastName] = useState(profileData.lastName);
+  const [textValue, settextValue] = useState(profileData.summary);
   function handleName(e) {
     setName(e.target.value);
   }
@@ -18,6 +18,10 @@ export default function EditarPerfil() {
     settextValue(e.target.value);
   }
 
+  useEffect(()=>{
+    handleNewData(name, lastName, textValue);
+  },[handleName, handlelastName, handleInput]);
+  
   return (
     <>
       <div className="editarperfil1">

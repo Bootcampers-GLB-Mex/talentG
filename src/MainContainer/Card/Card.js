@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./Card.css";
 
 function Card({profileData}) {
-  const [name] = useState(profileData.name);
+  const [firstName] = useState(profileData.firstName);
+  const [lastName] = useState(profileData.lastName);
   const [job] = useState(profileData.trainer? "Trainer" : "Student");
   const [boot] = useState("Bootcamp");
   const [area] = useState(profileData.bootcamp);
@@ -18,7 +19,7 @@ function Card({profileData}) {
       </div>
 
       <div className="lower-container">
-        <h2> {name} </h2>
+        <h2> {firstName} {lastName}</h2>
         <h4> {job} </h4>
         <h3>
           <span>{boot}</span> <span>{location}</span>

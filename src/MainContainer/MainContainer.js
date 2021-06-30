@@ -22,21 +22,24 @@ import {
   scheduleByBootcamp,
 } from "../sampleData";
 
-const ENDPOINT = "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/";
+const ENDPOINT =
+  "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/";
 
 export default function MainContainer({ initialData, isTrainer }) {
-
-  const [loading, setLoading]= useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [profileData] = useState({
-    name: `${initialData.firstName} ${initialData.lastName}`,
+    firstName: initialData.firstName,
+    lastName: initialData.lastName,
     location: initialData.location,
     bootcamp: initialData.training.trainingName,
     trainer: isTrainer,
-    summary: initialData.summary
+    summary: initialData.summary,
   });
 
-  const [scheduleByTraining, setScheduleByTraining] = useState(scheduleByBootcamp);
+  const [scheduleByTraining, setScheduleByTraining] = useState(
+    scheduleByBootcamp
+  );
   const [dailyScheduleData, setDailyScheduleData] = useState(currentSchedule);
   const [trainer] = useState(trainerById1);
   const [homeworks] = useState(listHomework);
@@ -45,7 +48,8 @@ export default function MainContainer({ initialData, isTrainer }) {
   const [showAgenda, setShowAgenda] = useState(false);
   const [showEditAgenda, setShowEditAgenda] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
-  const [classVotes, setClassVotes] = useState(votes)
+  const [classVotes, setClassVotes] = useState(votes);
+  const [updatedProfile, setUpdatedProfile] = useState({})
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
@@ -53,51 +57,51 @@ export default function MainContainer({ initialData, isTrainer }) {
     const daily = res[0];
     setDailyScheduleData((prev) => ({
       ...prev,
-      ...daily
+      ...daily,
     }));
-    setScheduleByTraining((prev)=>({
+    setScheduleByTraining((prev) => ({
       ...prev,
-      ...res
+      ...res,
     }));
   }
 
   function getTraining(trainingId) {
-    let config = configAxios('get', '/schedule/training/', trainingId)
+    let config = configAxios("get", "/schedule/training/", trainingId);
 
     axios(config)
-      .then(((response) => {
+      .then((response) => {
         handleSchedule(response.data.content);
         setLoading(false);
-      }))
+      })
       .catch(function (error) {
         console.log(error);
       });
   }
 
-  function getStudentsByTraining(trainingId){
-    let config = configAxios('get', '/student/filter_by/training/', trainingId);
+  function getStudentsByTraining(trainingId) {
+    let config = configAxios("get", "/student/filter_by/training/", trainingId);
 
     axios(config)
-      .then(((response) => {
+      .then((response) => {
         const students = response.data.content;
         setStudents((prev) => ({
-          ...students
-        }))
-      }))
+          ...students,
+        }));
+      })
       .catch(function (error) {
         console.log(error);
       });
   }
 
   function getClassFeelings(scheduleId) {
-    let config = configAxios('get', '/schedule/votes/', scheduleId)
+    let config = configAxios("get", "/schedule/votes/", scheduleId);
     axios(config)
-      .then(((response) => {
+      .then((response) => {
         const data = response.data.content;
         setClassVotes((prev) => ({
-          ...data
+          ...data,
         }));
-      }))
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -109,8 +113,8 @@ export default function MainContainer({ initialData, isTrainer }) {
     getTraining(trainingId);
     getStudentsByTraining(trainingId);
     getClassFeelings(scheduleId);
-  }, [])
-  
+  }, []);
+
   function toggleEdit() {
     setIsEditable(!isEditable);
     editShowAgenda();
@@ -140,19 +144,44 @@ export default function MainContainer({ initialData, isTrainer }) {
     console.log(data);
   }
 
-  function configAxios (methodVerb, endpoint, param){
-    return ({
-        method: methodVerb,
-        url: `${ENDPOINT}${endpoint}${param}`,
-        headers: {
-          'Content-Type': 'application/json',
-          'accept': '*/*'
-        }
-      }
-    );
+  function configAxios(methodVerb, endpoint, param) {
+    return {
+      method: methodVerb,
+      url: `${ENDPOINT}${endpoint}${param}`,
+      headers: {
+        "Content-Type": "application/json",
+        accept: "*/*",
+      },
+    };
   }
-  return (
-    !loading ?
+
+  function updateProfile(name, lastName, textValue ) {
+    const payload = {
+      id: initialData.id,
+      firstName: name, 
+      lastName: lastName, 
+      email: initialData.email,
+      location: initialData.location,
+      summary: textValue,
+      urlImage: initialData.urlImage,
+      training: {
+        id: initialData.training.id,
+        trainingName: initialData.training.trainingName,
+        status: initialData.training.status,
+        initialDate: initialData.training.initialDate,
+        finalDate: initialData.training.finalDate,
+      },
+      status: initialData.status,
+    };
+    console.log(payload);
+  }
+
+  function handleDataNewProfile (name, lastName, textValue ){
+    setUpdatedProfile(name, lastName, textValue);
+    console.log(updatedProfile);
+  }
+
+  return !loading ? (
     <div className="MainContainer">
       <div className="MainContainer__left">
         <div className="CardContainer">
@@ -193,11 +222,10 @@ export default function MainContainer({ initialData, isTrainer }) {
         </div>
       </div>
       <ModalContainer
-        children={<EditarPerfil 
-          profileData = {profileData} 
-        />}
+        children={<EditarPerfil profileData={profileData} handleNewData =
+          {(name, lastName, textValue)=>(()=>handleDataNewProfile(name, lastName, textValue))} />}
         show={showEditProfile}
-        handlePrimary={() => alert("clicked editar perfil")}
+        handlePrimary={(newProfile) => updateProfile(newProfile)}
         handleClose={handleEditProfile}
         primaryBtnName={"Guardar"}
         secondaryBtnName={"Cerrar"}
@@ -210,7 +238,7 @@ export default function MainContainer({ initialData, isTrainer }) {
             isEditable={isEditable}
             toggleEdit={toggleEdit}
             trainers={trainers}
-            handlePrimary={(data)=>sendAgenda(data)}
+            handlePrimary={(data) => sendAgenda(data)}
           />
         }
         show={showAgenda}
@@ -219,7 +247,8 @@ export default function MainContainer({ initialData, isTrainer }) {
         secondaryBtnName={"Cerrar"}
       />
     </div>
-    : <h2>Loading...</h2>
+  ) : (
+    <h2>Loading...</h2>
   );
 }
 

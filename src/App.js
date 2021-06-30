@@ -33,14 +33,11 @@ function App() {
     }
   });
 
-  async function handleInitial(res) {
-    const data = await res;
+  function handleInitial(res) {
     setInitialData((prev) => ({
       ...prev,
-      email: "setby"
+      ...res
     }));
-    console.log(data);
-    console.log(initialData);
   }
 
   function handleLogin(mail, password, isTrainer) {
@@ -59,25 +56,26 @@ function App() {
     axios(config)
       .then(((response) => {
         handleInitial(response.data.content);
-      }
-      ))
+      }))
       .catch(function (error) {
         console.log(error);
       });
 
-    setIsLogin(() => {
-      return !isLogin ? api.getLogin() : !isLogin;
-    });
+    setIsLogin(true);
+  }
+
+  function handleLogout() {
+    setIsLogin(() => false);
   }
 
   return isLogin ?
     <>
       <Router>
         <div className="App">
-          <Header logout={handleLogin} />
+          <Header logout={handleLogout} />
           <Switch>
             <Route exact path='/'>
-              <MainContainer initialData={initialData} isTrainer = {isTrainer} />
+              <MainContainer initialData={initialData} isTrainer={isTrainer} />
             </Route>
             <Route path='/myProfile' component={UnderConstruction} />
           </Switch>

@@ -38,7 +38,7 @@ export default function MainContainer({initialData, isTrainer}) {
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
-  console.log(initialData);
+  console.log(profileData);
 
   function toggleEdit(id, day, topic, summary) {
     setIsEditable(!isEditable);

@@ -20,9 +20,14 @@ import {
   scheduleByBootcamp,
 } from "../sampleData";
 
-export default function MainContainer({initialData}) {
+export default function MainContainer({initialData, isTrainer}) {
+
+  const [profileData] = useState({
+    name: `${initialData.firstName} ${initialData.lastName}`,
+    location: initialData.location,
+    bootcamp: initialData.training.trainingName
+  });
   const [dailyScheduleData] = useState(currentSchedule);
-  const [isTrainer] = useState(true);
   const [trainer] = useState(trainerById1);
   const [homeworks] = useState(listHomework);
   const [students] = useState(studentsByTraining);
@@ -66,7 +71,7 @@ export default function MainContainer({initialData}) {
     <div className="MainContainer">
       <div className="MainContainer__left">
         <div className="CardContainer">
-          <Card />
+          <Card profileData={profileData}/>
         </div>
         <div className="ContainerButtons">
           <Button

@@ -1,11 +1,31 @@
 import PropTypes from 'prop-types';
-import React from "react";
+import React, { useEffect } from "react";
 import "./listContainer.css";
 
 import ListContent from "./ListContent";
 
 export default function ListContainer({ isTrainer, homeworks, students}) {
-  
+  useEffect(() => {
+    fetch(
+      "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/student/filter_by/training/1",{
+      headers:{
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : '*',
+        'accept':'*/*'
+      }
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+  }, [])
+
+
   const namehomeworks = homeworks.map(function(hw){
     return hw.homeworkName;
   });

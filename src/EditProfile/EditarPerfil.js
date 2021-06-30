@@ -30,21 +30,19 @@ export default function EditarPerfil() {
             <form>
                 <label>
                     Nombre:
-                    <div className="name1">
-                        <input type="text" value={name} 
-                        onChange ={handleName}/>
-                    </div>
                 </label>
-                <label className="last1">
+                <input type="text" value={name} 
+                    onChange ={handleName}/>
+                <label>
                     Apellido:
-                    <input type="text" value={lastName} 
-                    onChange ={handlelastName}/>
                 </label>
+                <input type="text" value={lastName} 
+                    onChange ={handlelastName}/>
                 <textarea
                     className="Summary"
                     name="edit"
-                    rows="10"
-                    cols="20"
+                    rows="5"
+                    cols="10"
                     value={textValue}
                     aria-label="Input text"
                     placeholder="Summary..."

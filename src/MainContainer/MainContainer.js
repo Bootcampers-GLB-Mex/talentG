@@ -274,7 +274,10 @@ export default function MainContainer({ initialData, isTrainer }) {
           />
         }
         show={showFeedback}
-        handleClose={handleShowFeedback}
+        handleClose={()=>{
+          handleShowFeedback();
+          setIsEditFeedback(false);
+        }}
         primaryBtnName={""}
         secondaryBtnName={"Cerrar"}
       />

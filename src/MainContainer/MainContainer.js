@@ -21,6 +21,7 @@ import {
   votes,
   scheduleByBootcamp,
 } from "../sampleData";
+import classFeelings from "./ClassFeelings/ClassFeelings";
 
 const ENDPOINT = "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/";
 
@@ -45,6 +46,7 @@ export default function MainContainer({ initialData, isTrainer }) {
   const [showAgenda, setShowAgenda] = useState(false);
   const [showEditAgenda, setShowEditAgenda] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
+  const [classVotes, setClassVotes] = useState(votes)
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
@@ -79,7 +81,6 @@ export default function MainContainer({ initialData, isTrainer }) {
     axios(config)
       .then(((response) => {
         handleSchedule(response.data.content);
-        console.log(response.data.content)
         setLoading(false);
       }))
       .catch(function (error) {
@@ -99,8 +100,29 @@ export default function MainContainer({ initialData, isTrainer }) {
 
     axios(config)
       .then(((response) => {
-        console.log(response.data.content);
         handleStudent(response.data.content);
+      }))
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  function getClassFeelings(scheduleId) {
+    let config = {
+      method: 'get',
+      url: `${ENDPOINT}/schedule/votes/${scheduleId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': '*/*'
+      }
+    };
+
+    axios(config)
+      .then(((response) => {
+        const data = response.data.content;
+        setClassVotes((prev) => ({
+          ...data
+        }));
       }))
       .catch(function (error) {
         console.log(error);
@@ -109,10 +131,12 @@ export default function MainContainer({ initialData, isTrainer }) {
 
   useEffect(() => {
     const trainingId = 1;
+    const scheduleId = dailyScheduleData.id;
     getTraining(trainingId);
     getStudentsByTraining(trainingId);
+    getClassFeelings(scheduleId);
   }, [])
-
+  
   function toggleEdit() {
     setIsEditable(!isEditable);
     editShowAgenda();
@@ -137,12 +161,12 @@ export default function MainContainer({ initialData, isTrainer }) {
   function editShowAgenda() {
     setShowEditAgenda(!showEditAgenda);
   }
-  console.log(scheduleByTraining);
 
   function sendAgenda(data) {
     console.log(data);
   }
 
+  console.log(classVotes);
   return (
     !loading ?
     <div className="MainContainer">
@@ -177,7 +201,7 @@ export default function MainContainer({ initialData, isTrainer }) {
           </div>
           <div className="DailyClassSurvey">
             <Survey
-              classVotes={votes}
+              classVotes={classVotes}
               isTrainer={isTrainer}
               dailyScheduleData={dailyScheduleData}
             />

@@ -5,11 +5,12 @@ export default function TopicList(props) {
 
     return (
         <>
-            <h2 className="topics__title">{topicsTitle}</h2>
+            <h2 className="topics__title">{!topicsTitle ? topicsTitle : null }</h2>
             <ol className="topics__list">
-                {summary.map((topic) => {
+                {/* {summary.map((topic) => {
                     return <li key={topic}>{topic}</li>
-                })}
+                })} */}
+                <li>{summary}</li>
             </ol>
         </>
     )
@@ -17,5 +18,5 @@ export default function TopicList(props) {
 
 TopicList.propTypes = {
     topicsTitle: PropTypes.string,
-    summary: PropTypes.array
+    summary: PropTypes.string
 }

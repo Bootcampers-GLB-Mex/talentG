@@ -42,7 +42,7 @@ export default function EditModalBody({ day, topicTitle, summary, trainers }) {
 EditModalBody.propTypes = {
     day: PropTypes.number,
     topicTitle: PropTypes.string,
-    summary: PropTypes.array || PropTypes.string,
+    // summary: PropTypes.array || PropTypes.string,
     trainers: PropTypes.array
 }
 EditModalBody.defaultProps = {

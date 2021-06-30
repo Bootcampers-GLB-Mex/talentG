@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import "./Card.css";
 
-function Card() {
-  const [name, setName] = useState("Alejandra Gutiérrez");
-  const [job, setJob] = useState("Student");
-  const [boot, setBoot] = useState("Bootcamp");
-  const [area, setArea] = useState("Web UI");
-  const [birth, setBirth] = useState("Edad");
-  const [age, setAge] = useState("24");
+function Card({profileData}) {
+  const [firstName] = useState(profileData.firstName);
+  const [lastName] = useState(profileData.lastName);
+  const [job] = useState(profileData.trainer? "Trainer" : "Student");
+  const [boot] = useState("Bootcamp");
+  const [area] = useState(profileData.bootcamp);
+  const [location] = useState("Localidad");
+  const [loc] = useState(profileData.location);
 
   return (
     <div className="Card">
@@ -18,13 +19,13 @@ function Card() {
       </div>
 
       <div className="lower-container">
-        <h2> {name} </h2>
+        <h2> {firstName} {lastName}</h2>
         <h4> {job} </h4>
         <h3>
-          <span>{boot}</span> <span>{birth}</span>
+          <span>{boot}</span> <span>{location}</span>
         </h3>
         <p>
-          <span> {area} </span> <span>{age}</span>
+          <span> {area} </span> <span>{loc}</span>
         </p>
       </div>
     </div>

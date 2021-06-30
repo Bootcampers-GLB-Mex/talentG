@@ -26,6 +26,8 @@ const ENDPOINT = "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasti
 
 export default function MainContainer({ initialData, isTrainer }) {
 
+  const [loading, setLoading]= useState(true);
+
   const [profileData] = useState({
     name: `${initialData.firstName} ${initialData.lastName}`,
     location: initialData.location,
@@ -34,8 +36,8 @@ export default function MainContainer({ initialData, isTrainer }) {
   });
   const [dailyScheduleData, setDailyScheduleData] = useState(currentSchedule);
   const [trainer] = useState(trainerById1);
-  const [homeworks] = useState(listHomework);
-  const [students] = useState(studentsByTraining);
+  const [homeworks, setHomeworks] = useState(listHomework);
+  const [students, setStudents] = useState(studentsByTraining);
   const [showEditProfile, setshowEditProfile] = useState(false);
   const [showAgenda, setShowAgenda] = useState(false);
   const [showEditAgenda, setShowEditAgenda] = useState(false);
@@ -50,9 +52,13 @@ export default function MainContainer({ initialData, isTrainer }) {
     }));
   }
 
+  function handleStudent(res) {
+    setStudents((prev) => ({
+      ...res
+    }))
+  }
 
-  useEffect(() => {
-    const trainingId = 1;
+  function getTraining(trainingId) {
     let config = {
       method: 'get',
       url: `${ENDPOINT}/schedule/training/${trainingId}`,
@@ -64,15 +70,37 @@ export default function MainContainer({ initialData, isTrainer }) {
 
     axios(config)
       .then(((response) => {
-        console.log(response.data.content[0]);
-        handleSchedule(response.data.content[0])
+        handleSchedule(response.data.content[0]);
+        setLoading(false);
+      }))
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  useEffect(() => {
+    const trainingId = 1;
+    getTraining(trainingId);
+
+    let config = {
+      method: 'get',
+      url: `${ENDPOINT}/student/filter_by/training/${trainingId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': '*/*'
+      }
+    };
+
+    axios(config)
+      .then(((response) => {
+        console.log(response.data.content);
+        handleStudent(response.data.content);
       }))
       .catch(function (error) {
         console.log(error);
       });
   }, [])
 
-  console.log(dailyScheduleData);
   function toggleEdit(id, day, topic, summary) {
     setIsEditable(!isEditable);
     editShowAgenda();
@@ -101,6 +129,7 @@ export default function MainContainer({ initialData, isTrainer }) {
   }
 
   return (
+    !loading ?
     <div className="MainContainer">
       <div className="MainContainer__left">
         <div className="CardContainer">
@@ -164,6 +193,7 @@ export default function MainContainer({ initialData, isTrainer }) {
         secondaryBtnName={"Cerrar"}
       />
     </div>
+    : <h2>Loading...</h2>
   );
 }
 

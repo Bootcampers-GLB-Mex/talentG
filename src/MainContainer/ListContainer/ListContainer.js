@@ -1,27 +1,32 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import React from "react";
 import "./listContainer.css";
 
-
 import ListContent from "./ListContent";
 
-export default function ListContainer({ isTrainer, homeworks, students}) {
+export default function ListContainer({ isTrainer, homeworks, students }) {
 
+  const studentsArr = Object.keys(students).map((key) => {
+    return students[key];
+  });
 
-  const namehomeworks = homeworks.map(function(hw){
+  const nameStudents = studentsArr.map(function (student) {
+    return student.firstName + " " + student.lastName;
+  });
+
+  // const homeworksArr = Object.keys(homeworks).map((key) => {
+  //   return students[key];
+  // });
+
+  const namehomeworks = homeworks.map(function (hw) {
     return hw.homeworkName;
   });
-
-  const nameStudents = students.map(function(student){
-    return student.firstName +" "+ student.lastName;
-  });
-
 
   return (
     <section className="listContainer" data-testid="listContainer">
       {isTrainer && (
         <>
-          <ListContent list={nameStudents} title = "Mis Alumnos" />
+          <ListContent list={nameStudents} title="Mis Alumnos" />
         </>
       )}
       {!isTrainer && (
@@ -33,23 +38,26 @@ export default function ListContainer({ isTrainer, homeworks, students}) {
   );
 }
 
-
 ListContainer.propTypes = {
   isTrainer: PropTypes.bool,
-  homeworks: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    homeworkName: PropTypes.string,
-    feedback: PropTypes.string,
-    homeworkLink: PropTypes.string,
-    id_schedule: PropTypes.number,
-    id_student: PropTypes.number
-  })),
-  students: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string
-  }))
-}
+  homeworks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      homeworkName: PropTypes.string,
+      feedback: PropTypes.string,
+      homeworkLink: PropTypes.string,
+      id_schedule: PropTypes.number,
+      id_student: PropTypes.number,
+    })
+  ),
+  students: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+    })
+  ),
+};
 
 ListContainer.defaultProps = {
   isTrainer: false,
@@ -71,21 +79,23 @@ ListContainer.defaultProps = {
         "https://codesandbox.io/s/strange-microservice-3bhbf?file=/styles.css",
       id_schedule: 2,
       id_student: 0,
-    }
+    },
   ],
-  students: [{
-    id: 1,
-    firstName: "Alejandra",
-    lastName: "Gutierrez"
-  },  
-  {
-    id: 2,
-    email: "student@students.com",
-    firstName: "Atziri",
-    lastName: "Perez",
-    location: "CDMX",
-    summary: "Es muy cool",
-    training: 1,
-    status: true,
-  }]
-}
+  students: [
+    {
+      id: 1,
+      firstName: "Alejandra",
+      lastName: "Gutierrez",
+    },
+    {
+      id: 2,
+      email: "student@students.com",
+      firstName: "Atziri",
+      lastName: "Perez",
+      location: "CDMX",
+      summary: "Es muy cool",
+      training: 1,
+      status: true,
+    },
+  ],
+};

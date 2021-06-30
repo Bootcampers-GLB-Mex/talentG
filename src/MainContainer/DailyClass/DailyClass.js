@@ -18,7 +18,6 @@ export default function DailyClass({ isTrainer, dailyScheduleData, dailyImage, t
     const [showTrainer, setShowTrainer] = useState(false);
     const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
 
-    console.log(resources);
     function toggleEdit() {
         setShowEdit(() => !showEdit);
     }
@@ -123,12 +122,12 @@ DailyClass.defaultProps = {
         id: 1,
         id_Trainer: 1,
         id_training: 1,
-        summary: ["Some summary"],
-        topic: "CSS"
-    },
-    trainer: {
-        firstName: "Miguel",
-        lastName: "Romero"
+        summary: "Some summary",
+        topic: "CSS",
+        trainerDTO: {
+            firstName: "Miguel",
+            lastName: "Romero"
+        },
     },
     dailyImage: {
         src: "/assets/img/daily-class-1.png",

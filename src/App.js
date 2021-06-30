@@ -28,6 +28,7 @@ function App() {
     firstName: "Victor",
     lastName: "Cruz",
     status: false,
+    location: "CDMX",
     training: {
       trainingName: "UI"
     }
@@ -61,7 +62,7 @@ function App() {
         console.log(error);
       });
 
-    setIsLogin(true);
+    setIsLogin(()=>true);
   }
 
   function handleLogout() {

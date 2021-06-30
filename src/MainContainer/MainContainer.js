@@ -25,7 +25,8 @@ export default function MainContainer({initialData, isTrainer}) {
   const [profileData] = useState({
     name: `${initialData.firstName} ${initialData.lastName}`,
     location: initialData.location,
-    bootcamp: initialData.training.trainingName
+    bootcamp: initialData.training.trainingName,
+    trainer: isTrainer
   });
   const [dailyScheduleData] = useState(currentSchedule);
   const [trainer] = useState(trainerById1);

@@ -3,11 +3,11 @@ import "./Card.css";
 
 function Card({profileData}) {
   const [name] = useState(profileData.name);
-  const [job] = useState("Trainer");
+  const [job] = useState(profileData.trainer? "Trainer" : "Student");
   const [boot] = useState("Bootcamp");
   const [area] = useState(profileData.bootcamp);
   const [location] = useState("Localidad");
-  const [age] = useState(profileData.location);
+  const [loc] = useState(profileData.location);
 
   return (
     <div className="Card">
@@ -24,7 +24,7 @@ function Card({profileData}) {
           <span>{boot}</span> <span>{location}</span>
         </h3>
         <p>
-          <span> {area} </span> <span>{age}</span>
+          <span> {area} </span> <span>{loc}</span>
         </p>
       </div>
     </div>

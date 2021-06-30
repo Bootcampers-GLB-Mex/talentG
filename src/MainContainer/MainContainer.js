@@ -10,6 +10,7 @@ import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import EditarPerfil from "../EditProfile/EditarPerfil";
 import AgendaModal from "../AgendaModal/AgendaModal";
+import Feedback from "./Feedback/Feedback";
 
 import "./MainContainer.css";
 
@@ -49,7 +50,9 @@ export default function MainContainer({ initialData, isTrainer }) {
   const [showEditAgenda, setShowEditAgenda] = useState(false);
   const [isEditable, setIsEditable] = useState(false);
   const [classVotes, setClassVotes] = useState(votes);
-  const [updatedProfile, setUpdatedProfile] = useState({})
+  const [updatedProfile, setUpdatedProfile] = useState({});
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [isEditFeedback, setIsEditFeedback] = useState(false);
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
@@ -123,10 +126,7 @@ export default function MainContainer({ initialData, isTrainer }) {
   function handleEditProfile() {
     setshowEditProfile(!showEditProfile);
   }
-  // function handleAgenda() {
-  //   setShowAgenda(!showAgenda);
-
-  // }
+  
 
   function handleShowAgenda() {
     setShowAgenda(!showAgenda);
@@ -138,6 +138,22 @@ export default function MainContainer({ initialData, isTrainer }) {
 
   function editShowAgenda() {
     setShowEditAgenda(!showEditAgenda);
+  }
+
+  function toggleEditFeedback() {
+    setIsEditFeedback(!isEditFeedback);
+    // setShowFeedback(!showFeedback);
+  }
+
+  function handleShowFeedback() {
+    // Cierra panel de edicion de feedback
+    setShowFeedback(!showFeedback);
+    // setIsEditFeedback(!isEditFeedback);
+    //Despliega lista estudiantes
+    // if (showEditAgenda) {
+    //   setIsEditFeedback(false);
+    //   setShowEditAgenda(false);
+    // }
   }
 
   function sendAgenda(data) {
@@ -193,7 +209,7 @@ export default function MainContainer({ initialData, isTrainer }) {
             handleEvent={handleEditProfile}
           ></Button>
           <Button children="Ver Agenda" handleEvent={handleShowAgenda}></Button>
-          <Button children="Ver Feedback"></Button>
+          <Button children="Ver Feedback" handleEvent={handleShowFeedback}></Button>
         </div>
       </div>
       <div className="MainContainer__right">
@@ -244,6 +260,22 @@ export default function MainContainer({ initialData, isTrainer }) {
         show={showAgenda}
         handleClose={handleShowAgenda}
         primaryBtnName={showEditAgenda ? "Guardar" : ""}
+        secondaryBtnName={"Cerrar"}
+      />
+      <ModalContainer
+        children={
+          <Feedback
+            isTrainer={isTrainer}
+            schedule={scheduleByBootcamp}
+            homeworkList={homeworks}
+            students={students}
+            isEdit={isEditFeedback}
+            toggleEditFeed={toggleEditFeedback}
+          />
+        }
+        show={showFeedback}
+        handleClose={handleShowFeedback}
+        primaryBtnName={""}
         secondaryBtnName={"Cerrar"}
       />
     </div>

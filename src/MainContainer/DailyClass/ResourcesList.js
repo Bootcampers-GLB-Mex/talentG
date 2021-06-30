@@ -5,13 +5,13 @@ export default function ResourcesList(props) {
     return (
         <>
             <h2 className="resources__title">Recursos:</h2>
-            <ul className="resources__list">
+            <ol className="resources__list">
                 {resources.map((resource) => {
                     return (
-                        <li key={resource.title}><a href={resource.href} alt={resource.title}>{resource.title}</a></li>
+                        <li key={resource.summary}><a href={resource.link} alt={resource.summary}>{resource.summary}</a></li>
                     );
                 })}
-            </ul>
+            </ol>
         </>
     );
 }

@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
+import axios from "axios";
+
 import DailyClass from "./DailyClass/DailyClass";
 import ListContainer from "./ListContainer/ListContainer";
 import Survey from "./Survey/Survey";
@@ -20,7 +22,9 @@ import {
   scheduleByBootcamp,
 } from "../sampleData";
 
-export default function MainContainer({initialData, isTrainer}) {
+const ENDPOINT = "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/";
+
+export default function MainContainer({ initialData, isTrainer }) {
 
   const [profileData] = useState({
     name: `${initialData.firstName} ${initialData.lastName}`,
@@ -28,7 +32,7 @@ export default function MainContainer({initialData, isTrainer}) {
     bootcamp: initialData.training.trainingName,
     trainer: isTrainer
   });
-  const [dailyScheduleData] = useState(currentSchedule);
+  const [dailyScheduleData, setDailyScheduleData] = useState(currentSchedule);
   const [trainer] = useState(trainerById1);
   const [homeworks] = useState(listHomework);
   const [students] = useState(studentsByTraining);
@@ -39,8 +43,36 @@ export default function MainContainer({initialData, isTrainer}) {
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
 
-  console.log(profileData);
+  function handleSchedule(res) {
+    setDailyScheduleData((prev) => ({
+      ...prev,
+      ...res
+    }));
+  }
 
+
+  useEffect(() => {
+    const trainingId = 1;
+    let config = {
+      method: 'get',
+      url: `${ENDPOINT}/schedule/training/${trainingId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': '*/*'
+      }
+    };
+
+    axios(config)
+      .then(((response) => {
+        console.log(response.data.content[0]);
+        handleSchedule(response.data.content[0])
+      }))
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [])
+
+  console.log(dailyScheduleData);
   function toggleEdit(id, day, topic, summary) {
     setIsEditable(!isEditable);
     editShowAgenda();
@@ -72,7 +104,7 @@ export default function MainContainer({initialData, isTrainer}) {
     <div className="MainContainer">
       <div className="MainContainer__left">
         <div className="CardContainer">
-          <Card profileData={profileData}/>
+          <Card profileData={profileData} />
         </div>
         <div className="ContainerButtons">
           <Button
@@ -135,27 +167,25 @@ export default function MainContainer({initialData, isTrainer}) {
   );
 }
 
-{
-  /* <ModalContainer
-        children={<EditarPerfil />}
-        show={showEditProfile}
-        handlePrimary={() => alert("clicked editar perfil")}
-        handleClose={handleEditProfile}
-        primaryBtnName={"Guardar"}
-        secondaryBtnName={"Cerrar"}
-      />
-      <ModalContainer
-        children={
-          <AgendaModal
-            isTrainer={isTrainer}
-            schedule={scheduleByBootcamp}
-            isEditable={isEditable}
-            toggleEdit={toggleEdit}
-            trainers={trainers}
-          />}
-        show={showAgenda}
-        handleClose={handleShowAgenda}
-        primaryBtnName={showEditAgenda ? "Guardar" : ""}
-        secondaryBtnName={"Cerrar"}
-      /> */
-}
+/* <ModalContainer
+      children={<EditarPerfil />}
+      show={showEditProfile}
+      handlePrimary={() => alert("clicked editar perfil")}
+      handleClose={handleEditProfile}
+      primaryBtnName={"Guardar"}
+      secondaryBtnName={"Cerrar"}
+    />
+    <ModalContainer
+      children={
+        <AgendaModal
+          isTrainer={isTrainer}
+          schedule={scheduleByBootcamp}
+          isEditable={isEditable}
+          toggleEdit={toggleEdit}
+          trainers={trainers}
+        />}
+      show={showAgenda}
+      handleClose={handleShowAgenda}
+      primaryBtnName={showEditAgenda ? "Guardar" : ""}
+      secondaryBtnName={"Cerrar"}
+    /> */

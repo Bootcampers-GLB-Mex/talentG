@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-import { api } from './api/apiMock';
 import MainContainer from './MainContainer/MainContainer';
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
@@ -57,6 +56,7 @@ function App() {
     axios(config)
       .then(((response) => {
         handleInitial(response.data.content);
+        console.log(response.data.content);
       }))
       .catch(function (error) {
         console.log(error);
@@ -69,6 +69,7 @@ function App() {
     setIsLogin(() => false);
   }
 
+  console.log(initialData);
   return isLogin ?
     <>
       <Router>

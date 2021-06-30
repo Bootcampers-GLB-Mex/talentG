@@ -93,15 +93,15 @@ export default function DailyClass({ isTrainer, dailyScheduleData, dailyImage, t
 
 DailyClass.propTypes = {
     isTrainer: PropTypes.bool,
-    dailyScheduleData: PropTypes.shape({
-        date: PropTypes.string,
-        day: PropTypes.number,
-        id: PropTypes.number,
-        id_Trainer: PropTypes.number,
-        id_training: PropTypes.number,
-        summary: PropTypes.array,
-        topic: PropTypes.string
-    }),
+    // dailyScheduleData: PropTypes.shape({
+    //     date: PropTypes.string,
+    //     day: PropTypes.number,
+    //     id: PropTypes.number,
+    //     id_Trainer: PropTypes.number,
+    //     id_training: PropTypes.number,
+    //     summary: PropTypes.array,
+    //     topic: PropTypes.string
+    // }),
     trainer: PropTypes.shape({
         firstName: PropTypes.string,
         lastName: PropTypes.string

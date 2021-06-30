@@ -21,7 +21,6 @@ import {
   votes,
   scheduleByBootcamp,
 } from "../sampleData";
-import classFeelings from "./ClassFeelings/ClassFeelings";
 
 const ENDPOINT = "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/";
 
@@ -40,7 +39,7 @@ export default function MainContainer({ initialData, isTrainer }) {
   const [scheduleByTraining, setScheduleByTraining] = useState(scheduleByBootcamp);
   const [dailyScheduleData, setDailyScheduleData] = useState(currentSchedule);
   const [trainer] = useState(trainerById1);
-  const [homeworks, setHomeworks] = useState(listHomework);
+  const [homeworks] = useState(listHomework);
   const [students, setStudents] = useState(studentsByTraining);
   const [showEditProfile, setshowEditProfile] = useState(false);
   const [showAgenda, setShowAgenda] = useState(false);
@@ -62,21 +61,8 @@ export default function MainContainer({ initialData, isTrainer }) {
     }));
   }
 
-  function handleStudent(res) {
-    setStudents((prev) => ({
-      ...res
-    }))
-  }
-
   function getTraining(trainingId) {
-    let config = {
-      method: 'get',
-      url: `${ENDPOINT}/schedule/training/${trainingId}`,
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': '*/*'
-      }
-    };
+    let config = configAxios('get', '/schedule/training/', trainingId)
 
     axios(config)
       .then(((response) => {
@@ -89,18 +75,14 @@ export default function MainContainer({ initialData, isTrainer }) {
   }
 
   function getStudentsByTraining(trainingId){
-    let config = {
-      method: 'get',
-      url: `${ENDPOINT}/student/filter_by/training/${trainingId}`,
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': '*/*'
-      }
-    };
+    let config = configAxios('get', '/student/filter_by/training/', trainingId);
 
     axios(config)
       .then(((response) => {
-        handleStudent(response.data.content);
+        const students = response.data.content;
+        setStudents((prev) => ({
+          ...students
+        }))
       }))
       .catch(function (error) {
         console.log(error);
@@ -108,15 +90,7 @@ export default function MainContainer({ initialData, isTrainer }) {
   }
 
   function getClassFeelings(scheduleId) {
-    let config = {
-      method: 'get',
-      url: `${ENDPOINT}/schedule/votes/${scheduleId}`,
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': '*/*'
-      }
-    };
-
+    let config = configAxios('get', '/schedule/votes/', scheduleId)
     axios(config)
       .then(((response) => {
         const data = response.data.content;
@@ -166,7 +140,17 @@ export default function MainContainer({ initialData, isTrainer }) {
     console.log(data);
   }
 
-  console.log(classVotes);
+  function configAxios (methodVerb, endpoint, param){
+    return ({
+        method: methodVerb,
+        url: `${ENDPOINT}${endpoint}${param}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'accept': '*/*'
+        }
+      }
+    );
+  }
   return (
     !loading ?
     <div className="MainContainer">

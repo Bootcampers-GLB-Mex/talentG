@@ -56,7 +56,6 @@ function App() {
     axios(config)
       .then(((response) => {
         handleInitial(response.data.content);
-        console.log(response.data.content);
       }))
       .catch(function (error) {
         console.log(error);
@@ -69,7 +68,6 @@ function App() {
     setIsLogin(() => false);
   }
 
-  console.log(initialData);
   return isLogin ?
     <>
       <Router>

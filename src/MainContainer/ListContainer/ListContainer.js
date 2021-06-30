@@ -50,13 +50,13 @@ ListContainer.propTypes = {
       id_student: PropTypes.number,
     })
   ),
-  students: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-    })
-  ),
+  // students: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number,
+  //     firstName: PropTypes.string,
+  //     lastName: PropTypes.string,
+  //   })
+  // ),
 };
 
 ListContainer.defaultProps = {

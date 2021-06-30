@@ -8,7 +8,7 @@ export default function ResourcesList(props) {
             <ol className="resources__list">
                 {resources.map((resource) => {
                     return (
-                        <li key={resource.summary}><a href={resource.link} alt={resource.summary}>{resource.summary}</a></li>
+                        <li key={resource.id}><a href={resource.link} alt={resource.summary}>{resource.summary}</a></li>
                     );
                 })}
             </ol>

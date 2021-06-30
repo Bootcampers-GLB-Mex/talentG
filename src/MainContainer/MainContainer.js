@@ -7,7 +7,7 @@ import Button from "./button1/button";
 import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import EditarPerfil from "../EditProfile/EditarPerfil";
-import AgendaModal from '../AgendaModal/AgendaModal';
+import AgendaModal from "../AgendaModal/AgendaModal";
 
 import "./MainContainer.css";
 
@@ -17,7 +17,7 @@ import {
   listHomework,
   studentsByTraining,
   votes,
-  scheduleByBootcamp
+  scheduleByBootcamp,
 } from "../sampleData";
 
 export default function MainContainer() {
@@ -32,17 +32,21 @@ export default function MainContainer() {
   const [isEditable, setIsEditable] = useState(false);
 
   const trainers = ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
-  
+
   function toggleEdit(id, day, topic, summary) {
     setIsEditable(!isEditable);
     editShowAgenda();
-    console.log("Props: ", id, day, topic, summary);
+    // console.log("Props: ", id, day, topic, summary);
     // editShowAgenda(id,day,topic,summary);
   }
 
   function handleEditProfile() {
     setshowEditProfile(!showEditProfile);
   }
+  // function handleAgenda() {
+  //   setShowAgenda(!showAgenda);
+
+  // }
 
   function handleShowAgenda() {
     setShowAgenda(!showAgenda);
@@ -58,26 +62,73 @@ export default function MainContainer() {
 
   return (
     <div className="MainContainer">
-      <Card />
-      <div className="DailyClass">
-        <DailyClass
-          isTrainer={isTrainer}
-          dailyScheduleData={dailyScheduleData}
-          trainers={trainers}
-          trainer={trainer} /> </div>
-      <div className="ListContainer">
-        <ListContainer
-          isTrainer={isTrainer}
-          homeworks={homeworks}
-          students={students}
-        />
+      <div className="MainContainer__left">
+        <div className="CardContainer">
+          <Card />
+        </div>
+        <div className="ContainerButtons">
+          <Button
+            children="Editar Perfil"
+            handleEvent={handleEditProfile}
+          ></Button>
+          <Button children="Ver Agenda" handleEvent={handleShowAgenda}></Button>
+          <Button children="Ver Feedback"></Button>
+        </div>
       </div>
-      <div className="ContainerButtons">
-        <Button children="Editar Perfil" handleEvent={handleEditProfile}></Button>
-        <Button children="Ver Agenda" handleEvent={handleShowAgenda}></Button>
-        <Button children="Ver Feedback"></Button>
+      <div className="MainContainer__right">
+        <div className="DailyClass">
+          <DailyClass
+            isTrainer={isTrainer}
+            dailyScheduleData={dailyScheduleData}
+            trainer={trainer}
+          />
+        </div>
+        <div className="BottomContainer">
+          <div className="ListContainer">
+            <ListContainer
+              isTrainer={isTrainer}
+              homeworks={homeworks}
+              students={students}
+            />
+          </div>
+          <div className="DailyClassSurvey">
+            <Survey
+              classVotes={votes}
+              isTrainer={isTrainer}
+              dailyScheduleData={dailyScheduleData}
+            />
+          </div>
+        </div>
       </div>
       <ModalContainer
+        children={<EditarPerfil />}
+        show={showEditProfile}
+        handlePrimary={() => alert("clicked editar perfil")}
+        handleClose={handleEditProfile}
+        primaryBtnName={"Guardar"}
+        secondaryBtnName={"Cerrar"}
+      />
+      <ModalContainer
+        children={
+          <AgendaModal
+            isTrainer={isTrainer}
+            schedule={scheduleByBootcamp}
+            isEditable={isEditable}
+            toggleEdit={toggleEdit}
+            trainers={trainers}
+          />
+        }
+        show={showAgenda}
+        handleClose={handleShowAgenda}
+        primaryBtnName={showEditAgenda ? "Guardar" : ""}
+        secondaryBtnName={"Cerrar"}
+      />
+    </div>
+  );
+}
+
+{
+  /* <ModalContainer
         children={<EditarPerfil />}
         show={showEditProfile}
         handlePrimary={() => alert("clicked editar perfil")}
@@ -98,14 +149,5 @@ export default function MainContainer() {
         handleClose={handleShowAgenda}
         primaryBtnName={showEditAgenda ? "Guardar" : ""}
         secondaryBtnName={"Cerrar"}
-      />
-      <div className="DailyClassSurvey">
-        <Survey
-          classVotes={votes}
-          isTrainer={isTrainer}
-          dailyScheduleData={dailyScheduleData}
-        />
-      </div>
-    </div>
-  );
+      /> */
 }

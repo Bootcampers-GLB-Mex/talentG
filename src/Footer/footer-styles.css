@@ -2,11 +2,12 @@ footer {
   width: 100vw;
   height: 3.4rem;
   background-color: #18181a;
-  margin-bottom: 0px;
+  /* margin-bottom: 0px; */
   bottom: 0;
   position: absolute;
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 footer .globant-img {

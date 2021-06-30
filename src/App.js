@@ -14,7 +14,7 @@ function UnderConstruction() {
       <h1 className="myProfile__title">Talent G</h1>
       <p className="myProfile__subtitle">Under Construction</p>
     </div>
-  )
+  );
 }
 
 function App() {

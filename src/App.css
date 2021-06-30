@@ -19,12 +19,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Raleway';
+  font-family: "Raleway";
 }
 
 .App {
-  height: 100vh;
-  width: 80vw;
+  /* height: auto; */
+  /* width: 80vw; */
+  /* width: 100vw; */
 }
 
 .myProfile {
@@ -35,10 +36,10 @@
 
 .myProfile__title {
   font-size: 5rem;
-  color: #BED632;
+  color: #bed632;
 }
 
-.myProfile__subtitle{
+.myProfile__subtitle {
   font-size: 3rem;
   margin-top: 1rem;
 }

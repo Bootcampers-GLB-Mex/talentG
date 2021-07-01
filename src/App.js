@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import axios from "axios";
+
 import './App.css';
 
 import MainContainer from './MainContainer/MainContainer';
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import Login from "./Login/Login";
-import axios from "axios";
 
-const ENDPOINT = "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/";
+import { config } from './api/endpoint';
+import { api } from './api/apiMock';
 
 function UnderConstruction() {
   return (
@@ -21,17 +23,7 @@ function UnderConstruction() {
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const [isTrainer, setIsTrainer] = useState(false);
-  const [initialData, setInitialData] = useState({
-    email: "test",
-    firstName: "Victor",
-    lastName: "Cruz",
-    status: false,
-    location: "CDMX",
-    training: {
-      trainingName: "UI"
-    }
-  });
+  const [initialData, setInitialData] = useState(api.getInitialData());
 
   function handleInitial(res) {
     setInitialData((prev) => ({
@@ -40,20 +32,9 @@ function App() {
     }));
   }
 
-  function handleLogin(mail, password, isTrainer) {
-    setIsTrainer(isTrainer);
-    let train = isTrainer ? "trainer" : "student";
+  function handleLogin(mail, password) {
 
-    let config = {
-      method: 'post',
-      url: ENDPOINT + train + '/login?email=' + mail,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'accept': '*/*'
-      }
-    };
-
-    axios(config)
+    axios(config.login(mail, password))
       .then(((response) => {
         handleInitial(response.data.content);
       }))
@@ -61,7 +42,7 @@ function App() {
         console.log(error);
       });
 
-    setIsLogin(()=>true);
+    setIsLogin(() => true);
   }
 
   function handleLogout() {
@@ -75,7 +56,7 @@ function App() {
           <Header logout={handleLogout} />
           <Switch>
             <Route exact path='/'>
-              <MainContainer initialData={initialData} isTrainer={isTrainer} />
+              <MainContainer initialData={initialData} />
             </Route>
             <Route path='/myProfile' component={UnderConstruction} />
           </Switch>

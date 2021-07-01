@@ -36,5 +36,17 @@ export const api = {
     },
     getTrainers: () => {
         return ["Miguel Romero", "Juan Crisóstomo", "Angel Pantoja"];
+    },
+    getInitialData: () => {
+        return {
+            email: "test",
+            firstName: "Victor",
+            lastName: "Cruz",
+            status: false,
+            location: "CDMX",
+            training: {
+                trainingName: "UI"
+            }
+        }
     }
 }

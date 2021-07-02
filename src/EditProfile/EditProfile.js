@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import "./EditProfile.css";
 
-import "./editarperfil.css";
-
-export default function EditarPerfil({profileData, handleNewData}) {
+export default function EditProfile({profileData, handleNewData}) {
   const [name, setName] = useState(profileData.firstName);
   const foto = "";
   const [lastName, setlastName] = useState(profileData.lastName);
@@ -24,13 +24,13 @@ export default function EditarPerfil({profileData, handleNewData}) {
   
   return (
     <>
-        <div className="editarPerfil1">
-        <h3 className="editPerfil">Perfil</h3>
-        <p className="editFoto">Foto</p>
-        <div className= 'imageContainer'>
+        <div className="EditProfile">
+        <h3 className="EditProfile__title">Perfil</h3>
+        <p className="EditProfile__editPhoto">Foto</p>
+        <div className= 'EditProfile__imageContainer'>
                 <img scr={foto} alt='' /> 
             </div>
-        <div className="form1">
+        <div className="EditProfile__form">
         <form>
             <label>
                 Nombre:
@@ -43,7 +43,6 @@ export default function EditarPerfil({profileData, handleNewData}) {
             <input type="text" value={lastName} 
                 onChange ={handlelastName}/>
             <textarea
-                className="Summary"
                 name="edit"
                 value={textValue}
                 aria-label="Input text"
@@ -56,3 +55,7 @@ export default function EditarPerfil({profileData, handleNewData}) {
     </>
 );
 }
+EditProfile.propTypes = {
+  handleNewData: PropTypes.func,
+  profileData: PropTypes.object
+ }

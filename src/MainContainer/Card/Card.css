@@ -1,4 +1,4 @@
-.Card {
+.card__container{
   width: 18rem;
   background-color: white;
   border-radius: 5px;
@@ -7,7 +7,7 @@
   box-shadow: 0 .5rem 1rem 0 rgba(0,0,0,0.2), 0 .6rem 1.5rem 0 rgba(0,0,0,0.19);
 }
 
-.image-container img {
+.img__card {
   background-color: #c4c4c4;
   width: 90px;
   height: 90px;
@@ -16,20 +16,20 @@
   transform: translate(90px, 17px);
 }
 
-.lower-container {
+.card__lowerContainer {
   margin-top: 1rem;
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
 
-.lower-container h2 {
+.name__lowerContainer {
   color: black;
   font-weight: 500;
   font-size: 1rem;
   margin-bottom: 0.3rem;
 }
 
-.lower-container h4 {
+.job__lowerContainer {
   color: #7c8089;
   font-style: normal;
   font-weight: normal;
@@ -37,7 +37,7 @@
   margin-bottom: 1.18rem;
 }
 
-.lower-container h3 {
+.subtitle__lowerContainer{
   color: #4b4eff;
   font-style: normal;
   font-weight: 500;
@@ -48,7 +48,7 @@
   margin-bottom: 0.3rem;
 }
 
-.lower-container p {
+.location__lowerContainer {
   color: #000000;
   font-style: normal;
   font-weight: normal;

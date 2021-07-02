@@ -66,10 +66,15 @@ export default function MainContainer() {
           trainers={trainers}
           trainer={trainer} /> </div>
       <div className="ListContainer">
+        isTrainer ? 
         <ListContainer
           isTrainer={isTrainer}
-          homeworks={homeworks}
-          students={students}
+          title = "Mis alumnos"
+          children={<ListContent list={students}/>} />
+          : <ListContainer
+          isTrainer={isTrainer}
+          title = "Feedback"
+          children={<ListContent list={homeworks}/>}
         />
       </div>
       <div className="ContainerButtons">

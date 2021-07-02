@@ -4,49 +4,13 @@ import "./listContainer.css";
 
 import ListContent from "./ListContent";
 
-export default function ListContainer({ isTrainer, homeworks, students}) {
-  useEffect(() => {
-    fetch(
-      "http://proyectofinalbootcamp-env.eba-nmb4rsib.us-east-2.elasticbeanstalk.com/student/filter_by/training/1",{
-      headers:{
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : '*',
-        'accept':'*/*'
-      }
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-        },
-        (error) => {
-          console.log(error);
-        }
-      )
-  }, [])
-
-
-  const namehomeworks = homeworks.map(function(hw){
-    return hw.homeworkName;
-  });
-
-  const nameStudents = students.map(function(student){
-    return student.firstName +" "+ student.lastName;
-  });
+export default function ListContainer({title, children}) {
 
 
   return (
     <section className="listContainer" data-testid="listContainer">
-      {isTrainer && (
-        <>
-          <ListContent list={nameStudents} title = "Mis Alumnos" />
-        </>
-      )}
-      {!isTrainer && (
-        <>
-          <ListContent list={namehomeworks} title="Feedback" />
-        </>
-      )}
+      <h1 className="list__title" data-testid="titlelist">{title}</h1>
+      {children}
     </section>
   );
 }

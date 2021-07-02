@@ -10,7 +10,7 @@ import Survey from "./Survey/Survey";
 import ButtonContainer from "./ButtonContainer/ButtonContainer";
 import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
-import EditarPerfil from "../EditProfile/EditarPerfil";
+import EditProfile from "../EditProfile/EditProfile";
 import AgendaModal from "../AgendaModal/AgendaModal";
 import Feedback from "./Feedback/Feedback";
 
@@ -189,7 +189,7 @@ export default function MainContainer({ initialData }) {
         </div>
       </div>
       <ModalContainer
-        children={<EditarPerfil profileData={profileData} handleNewData=
+        children={<EditProfile profileData={profileData} handleNewData=
           {(name, lastName, textValue) => (() =>
             console.log(name, lastName, textValue))
           } />}

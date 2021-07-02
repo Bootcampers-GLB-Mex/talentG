@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import thumbUp from "../../img/thumb-up.svg";
+import thumbDown from "../../img/thumb-down.svg";
 import "./dailyclasssurvey-styles.css";
 
 export default function DailyClassSurvey(props) {
@@ -14,12 +16,12 @@ export default function DailyClassSurvey(props) {
       </div>
       <div className="dailyClassSurvey__contentBottom">
         <img
-          src={process.env.PUBLIC_URL + "/assets/img/thumb-up.svg"}
+          src={thumbUp}
           alt="thumbs-up"
           onClick={() => setCount(count + 1)}
         />
         <img
-          src={process.env.PUBLIC_URL + "/assets/img/thumb-down.svg"}
+          src={thumbDown}
           alt="thumbs-down"
           onClick={() => setCount(count - 1)}
         />

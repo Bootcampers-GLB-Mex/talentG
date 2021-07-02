@@ -1,14 +1,11 @@
 import React from "react";
+import logoGlobant from "../img/globant.png";
 import "./footer-styles.css";
 
 export default function Footer() {
   return (
     <footer>
-      <img
-        className="globant-img"
-        src={process.env.PUBLIC_URL + "/assets/img/globant.png"}
-        alt="logo"
-      />
+      <img className="globant-img" src={logoGlobant} alt="logo" />
     </footer>
   );
 }

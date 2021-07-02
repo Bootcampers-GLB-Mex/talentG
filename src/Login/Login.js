@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import './login.css';
+import { useState } from "react";
+import logoBlack from "../img/logoG-black.png";
+import "./login.css";
 
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
+import EmailInput from "./EmailInput";
+import PasswordInput from "./PasswordInput";
 
 export default function Login({ login }) {
     const [isMail, setIsMail] = useState(false);

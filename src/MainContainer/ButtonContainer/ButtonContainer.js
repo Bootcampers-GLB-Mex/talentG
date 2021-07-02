@@ -1,6 +1,6 @@
 import React from "react";
 import "./ButtonContainer.css";
-
+import PropTypes from 'prop-types';
 
 export const ButtonContainer  = ({children, handleEvent}) =>{
     return (
@@ -13,3 +13,7 @@ export const ButtonContainer  = ({children, handleEvent}) =>{
     )
 }
 export default ButtonContainer;
+ButtonContainer.propTypes = { 
+    children:PropTypes.string,
+    handleEvent:PropTypes.func
+}

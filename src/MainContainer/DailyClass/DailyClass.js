@@ -5,7 +5,6 @@ import TopicList from "./TopicList";
 import ResourcesList from "./ResourcesList";
 import ModalContainer from "../../ModalContainer/ModalContainer";
 import EditModalBody from "../../EditAgendaByDay/EditModalBody";
-import OptionsModalBody from "../../OptionModal/OptionsModalBody";
 import DailyImage from "../../img/daily-class-1.png";
 import optionsImg from "../../img/options.png";
 
@@ -18,24 +17,25 @@ export default function DailyClass({
   trainers,
 }) {
   const [resources] = useState(dailyScheduleData.resourceDTOList);
+  console.log(dailyScheduleData);
   const [trainer] = useState(
     `${dailyScheduleData.trainerDTO.firstName} ${dailyScheduleData.trainerDTO.lastName}`
   );
   const [showEdit, setShowEdit] = useState(false);
-  const [showOptions, setShowOptions] = useState(false);
   const [showTrainer, setShowTrainer] = useState(false);
   const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
+  const [showEditButton, setShowEditButton] = useState(false);
 
   function toggleEdit() {
-    setShowEdit(() => !showEdit);
-  }
-
-  function toggleOptions() {
-    setShowOptions(() => !showOptions);
+    setShowEdit(!showEdit);
   }
 
   function toggleTrainer() {
     setShowTrainer(() => !showTrainer);
+  }
+
+  function showButton() {
+    setShowEditButton(!showEditButton);
   }
 
   return (
@@ -70,10 +70,10 @@ export default function DailyClass({
         </div>
         {isTrainer && (
           <>
-            <button className="dailyClass__options" onClick={toggleOptions}>
+            <button className="dailyClass__options" onClick={showButton}>
               <img src={optionsImg} alt="" />
             </button>
-            <button className="dailyClass__edit" onClick={toggleEdit}>
+            <button className={showEditButton ? 'dailyClass__edit' : 'dailyClass__edit--hidden'} onClick={toggleEdit}>
               Editar
             </button>
           </>
@@ -91,17 +91,12 @@ export default function DailyClass({
               />
             }
             show={showEdit}
-            handleClose={toggleEdit}
+            handleClose={()=> {
+              toggleEdit();
+              showButton();
+            }}
             handlePrimary={() => alert("clicked send Daily class edit")}
             primaryBtnName={"Guardar"}
-            secondaryBtnName={"Cerrar"}
-          />
-          <ModalContainer
-            children={<OptionsModalBody />}
-            show={showOptions}
-            handleClose={toggleOptions}
-            handlePrimary={() => alert("Clicked save options")}
-            primaryBtnName={""}
             secondaryBtnName={"Cerrar"}
           />
         </>
@@ -113,26 +108,10 @@ export default function DailyClass({
 
 DailyClass.propTypes = {
   isTrainer: PropTypes.bool,
-  // dailyScheduleData: PropTypes.shape({
-  //     date: PropTypes.string,
-  //     day: PropTypes.number,
-  //     id: PropTypes.number,
-  //     id_Trainer: PropTypes.number,
-  //     id_training: PropTypes.number,
-  //     summary: PropTypes.array,
-  //     topic: PropTypes.string
-  // }),
-  trainer: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-  }),
-  dailyImage: PropTypes.shape({
-    src: PropTypes.string,
-    alt: PropTypes.string,
-    caption: PropTypes.string,
-  }),
+  dailyScheduleData: PropTypes.object,
+  dailyImage: PropTypes.object,
   trainers: PropTypes.array,
-};
+}
 
 DailyClass.defaultProps = {
   isTrainer: false,

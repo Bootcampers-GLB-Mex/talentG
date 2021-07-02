@@ -9,7 +9,14 @@ describe('<DailyClass/>', () => {
         id_Trainer: 1,
         id_training: 1,
         summary: ["Some summary"],
-        topic: "CSS"
+        topic: "CSS",
+        resourceDTOList: [{
+            title: "Cómo usar CSS",
+            href: "#"
+        },{
+            title: "resource2",
+            href:"#"
+        }]
     }
     const mockImage = {
         src: "/assets/img/daily-class-30.png",

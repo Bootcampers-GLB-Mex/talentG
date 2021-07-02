@@ -1,11 +1,9 @@
-import PropTypes from 'prop-types';
-import React, { useEffect } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import "./listContainer.css";
 
-import ListContent from "./ListContent";
 
-export default function ListContainer({title, children}) {
-
+export default function ListContainer({ title, children}) {
 
   return (
     <section className="listContainer" data-testid="listContainer">
@@ -15,23 +13,26 @@ export default function ListContainer({title, children}) {
   );
 }
 
-
 ListContainer.propTypes = {
   isTrainer: PropTypes.bool,
-  homeworks: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    homeworkName: PropTypes.string,
-    feedback: PropTypes.string,
-    homeworkLink: PropTypes.string,
-    id_schedule: PropTypes.number,
-    id_student: PropTypes.number
-  })),
-  students: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string
-  }))
-}
+  homeworks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      homeworkName: PropTypes.string,
+      feedback: PropTypes.string,
+      homeworkLink: PropTypes.string,
+      id_schedule: PropTypes.number,
+      id_student: PropTypes.number,
+    })
+  ),
+  // students: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     id: PropTypes.number,
+  //     firstName: PropTypes.string,
+  //     lastName: PropTypes.string,
+  //   })
+  // ),
+};
 
 ListContainer.defaultProps = {
   isTrainer: false,
@@ -53,21 +54,23 @@ ListContainer.defaultProps = {
         "https://codesandbox.io/s/strange-microservice-3bhbf?file=/styles.css",
       id_schedule: 2,
       id_student: 0,
-    }
+    },
   ],
-  students: [{
-    id: 1,
-    firstName: "Alejandra",
-    lastName: "Gutierrez"
-  },  
-  {
-    id: 2,
-    email: "student@students.com",
-    firstName: "Atziri",
-    lastName: "Perez",
-    location: "CDMX",
-    summary: "Es muy cool",
-    training: 1,
-    status: true,
-  }]
-}
+  students: [
+    {
+      id: 1,
+      firstName: "Alejandra",
+      lastName: "Gutierrez",
+    },
+    {
+      id: 2,
+      email: "student@students.com",
+      firstName: "Atziri",
+      lastName: "Perez",
+      location: "CDMX",
+      summary: "Es muy cool",
+      training: 1,
+      status: true,
+    },
+  ],
+};

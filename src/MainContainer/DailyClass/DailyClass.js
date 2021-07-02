@@ -9,26 +9,14 @@ import OptionsModalBody from '../../OptionModal/OptionsModalBody';
 
 import './dailyClass.css';
 
-export default function DailyClass({ isTrainer, dailyScheduleData, trainer, dailyImage, trainers }) {
+export default function DailyClass({ isTrainer, dailyScheduleData, dailyImage, trainers }) {
 
+    const [resources] = useState(dailyScheduleData.resourceDTOList);
+    const [trainer] = useState(`${dailyScheduleData.trainerDTO.firstName} ${dailyScheduleData.trainerDTO.lastName}`)
     const [showEdit, setShowEdit] = useState(false);
     const [showOptions, setShowOptions] = useState(false);
     const [showTrainer, setShowTrainer] = useState(false);
     const topicsTitle = "Aprenderemos los conceptos core sobre CSS:";
-    const resources = [
-        {
-            title: "What is flex?",
-            href: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox"
-        },
-        {
-            title: "Understanding Grid Layout",
-            href: "https://developer.mozilla.org/en-US/docs/Web/CSS/grid"
-        },
-        {
-            title: "CSS Selectors",
-            href: "https://www.w3schools.com/cssref/css_selectors.asp"
-        },
-    ];
 
     function toggleEdit() {
         setShowEdit(() => !showEdit);
@@ -59,7 +47,7 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer, dail
                         <img className="dailyClass__image" src={process.env.PUBLIC_URL + dailyImage.src} alt={dailyImage.alt}></img>
                         <figcaption hidden>{dailyImage.caption}</figcaption>
                     </figure>
-                    <p className="dailyClass__trainer" onClick={toggleTrainer}>Trainer: {trainer.firstName + trainer.lastName}</p>
+                    <p className="dailyClass__trainer" onClick={toggleTrainer}>Trainer: {trainer}</p>
                 </div>
                 {isTrainer &&
                     <>
@@ -105,15 +93,15 @@ export default function DailyClass({ isTrainer, dailyScheduleData, trainer, dail
 
 DailyClass.propTypes = {
     isTrainer: PropTypes.bool,
-    dailyScheduleData: PropTypes.shape({
-        date: PropTypes.string,
-        day: PropTypes.number,
-        id: PropTypes.number,
-        id_Trainer: PropTypes.number,
-        id_training: PropTypes.number,
-        summary: PropTypes.array,
-        topic: PropTypes.string
-    }),
+    // dailyScheduleData: PropTypes.shape({
+    //     date: PropTypes.string,
+    //     day: PropTypes.number,
+    //     id: PropTypes.number,
+    //     id_Trainer: PropTypes.number,
+    //     id_training: PropTypes.number,
+    //     summary: PropTypes.array,
+    //     topic: PropTypes.string
+    // }),
     trainer: PropTypes.shape({
         firstName: PropTypes.string,
         lastName: PropTypes.string
@@ -134,12 +122,12 @@ DailyClass.defaultProps = {
         id: 1,
         id_Trainer: 1,
         id_training: 1,
-        summary: ["Some summary"],
-        topic: "CSS"
-    },
-    trainer: {
-        firstName: "Miguel",
-        lastName: "Romero"
+        summary: "Some summary",
+        topic: "CSS",
+        trainerDTO: {
+            firstName: "Miguel",
+            lastName: "Romero"
+        },
     },
     dailyImage: {
         src: "/assets/img/daily-class-1.png",

@@ -1,33 +1,35 @@
-import React, {useState} from 'react'
-import './Card.css'
+import React, { useState } from "react";
+import "./Card.css";
 
-function Card(){
+function Card({profileData}) {
+  const [firstName] = useState(profileData.firstName);
+  const [lastName] = useState(profileData.lastName);
+  const [job] = useState(profileData.trainer? "Trainer" : "Student");
+  const [boot] = useState("Bootcamp");
+  const [area] = useState(profileData.bootcamp);
+  const [location] = useState("Localidad");
+  const [loc] = useState(profileData.location);
 
-    const [name] = useState('Alejandra Gutiérrez');
-    const [job] = useState('Student');
-    const [boot] = useState('Bootcamp');
-    const [area] = useState('Web UI');
-    const [birth] = useState('Edad');
-    const [age] = useState('24');
-
-
-    return(
-        <div className= 'Card'>
-            <div className= 'upper-container'>
-                <div className= 'image-container'>
-                    <img scr=" " alt='' height="100px" width ="100px"/> 
-                </div>
-            </div>
-
-            <div className="lower-container">
-                <h2> { name } </h2>
-                <h4> { job } </h4>
-                <h3> { boot } { birth }</h3>
-                <p> { area } { age } </p>
-            </div>
-
+  return (
+    <div className="Card">
+      <div className="upper-container">
+        <div className="image-container">
+          <img scr=" " alt="" height="100px" width="100px" />
         </div>
-    )
+      </div>
+
+      <div className="lower-container">
+        <h2> {firstName} {lastName}</h2>
+        <h4> {job} </h4>
+        <h3>
+          <span>{boot}</span> <span>{location}</span>
+        </h3>
+        <p>
+          <span> {area} </span> <span>{loc}</span>
+        </p>
+      </div>
+    </div>
+  );
 }
 
-export default Card
+export default Card;

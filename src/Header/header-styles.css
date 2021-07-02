@@ -1,39 +1,43 @@
-header{
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    height: 4em;
-    background-color: #18181A;
-    position: absolute;
-    z-index: 100;
+header {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 3.5rem;
+  background-color: #18181a;
+  position: absolute;
+  z-index: 100;
+  align-items: center;
 }
 
-.header__title{
-    font-family: 'Raleway', sans-serif;
-    font-size:1.9em;
-    color: #FFFFFF;
-    font-weight: 600;
-    margin-top: 1.3%;
-    margin-left: 2%;
-    position: relative;
+.header__title {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.9em;
+  color: #ffffff;
+  font-weight: 600;
+  margin-left: 2%;
+  position: relative;
 }
 
-.logoG{
-    margin-top: .9%;
-    margin-left: .7%;
-    width: 2.9em;
-    height: 2.9em;
+.logoG {
+  margin-left: 0.7%;
+  width: 2.9em;
+  height: 2.9em;
 }
 
-.my__bootcamp, .my__profile{
+.my__bootcamp, .my__profile, .my__bootcamp__logout{
     font-family: 'Raleway', sans-serif;
     font-size:1em;
     color: #FFFFFF;
-    margin-top: 2.2%;
     margin-left: 2%;
     text-decoration: none;
 }
 
-.my__bootcamp:hover, .my__profile:hover{
+.my__bootcamp__logout {
+    margin-left: auto;
+    margin-right: 15rem;
+}
+
+.my__bootcamp:hover, .my__profile:hover, .my__bootcamp__logout:hover{
     text-decoration: underline;
+    cursor: pointer;
 }

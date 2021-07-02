@@ -4,12 +4,10 @@ import "./dailyclasssurvey-styles.css";
 
 export default function DailyClassSurvey(props) {
   const { dailyScheduleData } = props;
-  // State temporal
   const [count, setCount] = useState(0);
   return (
     <>
       <div className="dailyClassSurvey__contentTop">
-        {/* La info de H1 se va a capturar */}
         <h1>
           Día {dailyScheduleData.day} - {dailyScheduleData.topic} Survey
         </h1>

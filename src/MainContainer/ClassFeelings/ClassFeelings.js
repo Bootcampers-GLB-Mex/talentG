@@ -9,7 +9,7 @@ export default function classFeelings(props) {
     <>
       <div className="feelings-info">
         <span>Sentimientos de la clase</span>
-        <span>{classVotes.totalVotes} votos</span>
+        <span>{classVotes.voters} votos</span>
       </div>
       <div className="feelings-percentage">
         <div className="feelings-percentage__chart">
@@ -17,14 +17,14 @@ export default function classFeelings(props) {
             src={process.env.PUBLIC_URL + "/assets/img/happy_face.svg"}
             alt="happy-face"
           />
-          <h1>{classVotes.like}%</h1>
+          <h1>{classVotes.likePercentage}%</h1>
         </div>
         <div className="feelings-percentage__chart">
           <img
             src={process.env.PUBLIC_URL + "/assets/img/sad_face.svg"}
             alt="sad-face"
           />
-          <h1>{classVotes.dislike}%</h1>
+          <h1>{classVotes.dislikePercentage}%</h1>
         </div>
       </div>
     </>
@@ -36,5 +36,5 @@ classFeelings.propTypes = {
     totalVotes: PropTypes.number,
     like: PropTypes.number,
     dislike: PropTypes.number,
-  }),
+  })
 };

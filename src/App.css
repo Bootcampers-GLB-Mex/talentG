@@ -6,7 +6,7 @@
 @font-face {
   font-family: "Raleway";
   font-weight: 600;
-  src: local("Raleway"), url(./fonts/Raleway-Medium.ttf) format("opentype");
+  src: local("Raleway"), url(./fonts/Raleway-SemiBold.ttf) format("opentype");
 }
 
 :root {
@@ -19,12 +19,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Raleway';
-}
-
-.App {
-  height: 100vh;
-  width: 80vw;
+  font-family: "Raleway";
 }
 
 .myProfile {
@@ -35,10 +30,10 @@
 
 .myProfile__title {
   font-size: 5rem;
-  color: #BED632;
+  color: #bed632;
 }
 
-.myProfile__subtitle{
+.myProfile__subtitle {
   font-size: 3rem;
   margin-top: 1rem;
 }

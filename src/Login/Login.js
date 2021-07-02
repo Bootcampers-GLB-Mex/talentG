@@ -22,7 +22,7 @@ export default function Login({ login }) {
                 <div className="login__container">
                     <div role="heading" aria-level="2" className="login__title">
                         <p className="title__text">Talent</p>
-                        <img className="title__logo" src={process.env.PUBLIC_URL + '/assets/img/logoG-black.png'} alt="logo" />
+                        <img className="title__logo" src={logoBlack} alt="logo" />
                     </div>
                     {!isMail ? <EmailInput handleMail={handleMail} />
                         : <PasswordInput login={(password) => login(mail, password, isTrainer)} />}

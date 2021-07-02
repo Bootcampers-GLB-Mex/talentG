@@ -11,10 +11,10 @@ export const config = {
       },
     };
   },
-  login: (mail, password) => {
+  login: (mail, password, trainer) => {
     return {
       method: 'post',
-      url: `${URL}/login?email=${mail}`,
+      url: `${URL}${trainer}/login?email=${mail}`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'accept': '*/*'

@@ -24,6 +24,7 @@ function UnderConstruction() {
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [initialData, setInitialData] = useState(api.getInitialData());
+  const [isTrainer, setIsTrainer] = useState(false);
 
   function handleInitial(res) {
     setInitialData((prev) => ({
@@ -32,9 +33,11 @@ function App() {
     }));
   }
 
-  function handleLogin(mail, password) {
+  function handleLogin(mail, password , isTrainer) {
+    setIsTrainer(isTrainer);
+    const train = isTrainer ? "trainer" : "student";
 
-    axios(config.login(mail, password))
+    axios(config.login(mail, password, train))
       .then(((response) => {
         handleInitial(response.data.content);
       }))
@@ -56,7 +59,9 @@ function App() {
           <Header logout={handleLogout} />
           <Switch>
             <Route exact path='/'>
-              <MainContainer initialData={initialData} />
+              <MainContainer 
+                initialData={initialData} 
+                isTrainer={isTrainer}/>
             </Route>
             <Route path='/myProfile' component={UnderConstruction} />
           </Switch>

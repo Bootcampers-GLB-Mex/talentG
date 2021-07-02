@@ -2,18 +2,19 @@ import React from "react";
 import "./ButtonContainer.css";
 import PropTypes from 'prop-types';
 
-export const ButtonContainer  = ({children, handleEvent}) =>{
+
+export const ButtonContainer = ({ children, handleEvent }) => {
     return (
-        <button className="button1" onClick= {handleEvent} >
-            <span>
+        <button className="ButtonContainer" onClick={handleEvent} >
             {children}
-            </span>
-           
+            <img className="ButtonContainer__vector"
+                alt=""
+                src={process.env.PUBLIC_URL + '/assets/img/vector.svg'} />
         </button>
-    )
+    );
 }
 export default ButtonContainer;
-ButtonContainer.propTypes = { 
-    children:PropTypes.string,
-    handleEvent:PropTypes.func
+ButtonContainer.propTypes = {
+    children: PropTypes.string,
+    handleEvent: PropTypes.func
 }

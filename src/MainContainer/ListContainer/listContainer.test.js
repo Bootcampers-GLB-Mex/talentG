@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ListContent from './ListContent';
+import ListContent from './ListStudents';
 import ListContainer from './ListContainer';
 
 describe('<ListContainer/>', () =>{

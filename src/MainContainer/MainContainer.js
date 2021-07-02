@@ -4,6 +4,8 @@ import axios from "axios";
 
 import DailyClass from "./DailyClass/DailyClass";
 import ListContainer from "./ListContainer/ListContainer";
+import ListStudents from "./ListContainer/ListStudents";
+import ListHomeworks from "./ListContainer/ListHomeworks";
 import Survey from "./Survey/Survey";
 import Button from "./button1/button";
 import Card from "./Card/Card";
@@ -36,7 +38,7 @@ export default function MainContainer({ initialData }) {
   const [showFeedback, setShowFeedback] = useState(false);
   const [isEditFeedback, setIsEditFeedback] = useState(false);
 
-  const isTrainer = initialData.trainer || false;
+  const isTrainer = initialData.trainer || true;
   const profileData = {
     firstName: initialData.firstName,
     lastName: initialData.lastName,
@@ -76,9 +78,8 @@ export default function MainContainer({ initialData }) {
         const students = response.data.content;
         setStudents(() => ({
           ...students,
-        }));
-      })
-      .catch(function (error) {
+        }))
+      }).catch(function (error) {
         console.log(error);
       });
   }
@@ -135,6 +136,13 @@ export default function MainContainer({ initialData }) {
     console.log(data);
   }
 
+  function handleListItem(id) {
+    setShowFeedback(true);
+  }
+
+  function handleHwFeedback(id) {
+    setShowAgenda(true);
+  }
   return !loading ? (
     <div className="MainContainer">
       <div className="MainContainer__left">
@@ -157,14 +165,19 @@ export default function MainContainer({ initialData }) {
             dailyScheduleData={dailyScheduleData}
             trainer={trainer}
           />
+
         </div>
         <div className="BottomContainer">
           <div className="ListContainer">
-            <ListContainer
-              isTrainer={isTrainer}
-              homeworks={homeworks}
-              students={students}
-            />
+            {isTrainer ?
+              <ListContainer
+                title="Mis alumnos"
+                children={<ListStudents list={students} handleListItem={(id) => handleListItem(id)} />} />
+              : <ListContainer
+                title="Feedback"
+                children={<ListHomeworks list={homeworks} handleHwFeedback={(id) => handleHwFeedback(id)} />}
+              />
+            }
           </div>
           <div className="DailyClassSurvey">
             <Survey
@@ -223,6 +236,6 @@ export default function MainContainer({ initialData }) {
       />
     </div>
   ) : (
-    <h2>Loading...</h2>
-  );
+      <h2>Loading...</h2>
+    );
 }

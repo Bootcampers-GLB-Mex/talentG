@@ -2,38 +2,13 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./listContainer.css";
 
-import ListContent from "./ListContent";
 
-export default function ListContainer({ isTrainer, homeworks, students }) {
-
-  const studentsArr = Object.keys(students).map((key) => {
-    return students[key];
-  });
-
-  const nameStudents = studentsArr.map(function (student) {
-    return student.firstName + " " + student.lastName;
-  });
-
-  // const homeworksArr = Object.keys(homeworks).map((key) => {
-  //   return students[key];
-  // });
-
-  const namehomeworks = homeworks.map(function (hw) {
-    return hw.homeworkName;
-  });
+export default function ListContainer({ title, children}) {
 
   return (
     <section className="listContainer" data-testid="listContainer">
-      {isTrainer && (
-        <>
-          <ListContent list={nameStudents} title="Mis Alumnos" />
-        </>
-      )}
-      {!isTrainer && (
-        <>
-          <ListContent list={namehomeworks} title="Feedback" />
-        </>
-      )}
+      <h1 className="list__title" data-testid="titlelist">{title}</h1>
+      {children}
     </section>
   );
 }

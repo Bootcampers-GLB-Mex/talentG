@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import "./listContainer.css";
 
+import {instance} from '../../helpers/api.instance';
+
 import ListContent from "./ListContent";
 
 export default function ListContainer({ isTrainer, homeworks, students }) {

@@ -7,10 +7,12 @@ import PasswordInput from './PasswordInput';
 export default function Login({ login }) {
     const [isMail, setIsMail] = useState(false);
     const [mail, setMail] = useState('');
+    const [isTrainer, setIsTrainer] = useState(false);
 
-    function handleMail(mailInput) {
+    function handleMail(mailInput, checked) {
         setMail(mailInput);
         setIsMail(!isMail);
+        setIsTrainer(checked);
     }
 
     return (
@@ -22,7 +24,7 @@ export default function Login({ login }) {
                         <img className="title__logo" src={process.env.PUBLIC_URL + '/assets/img/logoG-black.png'} alt="logo" />
                     </div>
                     {!isMail ? <EmailInput handleMail={handleMail} />
-                        : <PasswordInput login={(password) => login(mail, password)} />}
+                        : <PasswordInput login={(password) => login(mail, password, isTrainer)} />}
                 </div>
             </div>
         </>

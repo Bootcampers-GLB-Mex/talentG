@@ -28,7 +28,7 @@ export default function EditarPerfil({profileData, handleNewData}) {
         <h3 className="editperfil">Perfil</h3>
         <p className="editfoto">Foto</p>
         <div className= 'image-container'>
-                <img scr={foto} alt='' height="100px" width ="100px"/> 
+                <img  scr={foto} alt='' /> 
             </div>
         <div className="form1">
         <form>
@@ -45,8 +45,6 @@ export default function EditarPerfil({profileData, handleNewData}) {
             <textarea
                 className="Summary"
                 name="edit"
-                rows="5"
-                cols="10"
                 value={textValue}
                 aria-label="Input text"
                 placeholder="Summary..."

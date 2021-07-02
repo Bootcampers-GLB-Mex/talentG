@@ -1,8 +1,8 @@
 import React from "react";
-import "./button.css";
+import "./ButtonContainer.css";
 
 
-export const Button = ({children, handleEvent}) =>{
+export const ButtonContainer  = ({children, handleEvent}) =>{
     return (
         <button className="button1" onClick= {handleEvent} >
             <span>
@@ -12,4 +12,4 @@ export const Button = ({children, handleEvent}) =>{
         </button>
     )
 }
-export default Button;
+export default ButtonContainer;

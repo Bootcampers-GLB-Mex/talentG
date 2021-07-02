@@ -4,7 +4,7 @@
   width: 18rem;
   height: 4.5rem;
   font-size: 1rem;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   text-align: left;
   border-radius: 0.5rem;
   border: 2px solid #555555;
@@ -13,6 +13,8 @@
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.2),
     0 0.6rem 1.5rem 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 0.7rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .button1 span {
@@ -23,7 +25,6 @@
 }
 
 .button1 span:after {
-  content: "\00bb";
   position: absolute;
   opacity: 0;
   top: 0;

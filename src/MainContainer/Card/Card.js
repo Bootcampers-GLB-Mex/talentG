@@ -11,20 +11,20 @@ function Card({profileData}) {
   const [loc] = useState(profileData.location);
 
   return (
-    <div className="Card">
-      <div className="upper-container">
-        <div className="image-container">
-          <img scr=" " alt="" height="100px" width="100px" />
+    <div className="card__container">
+      <div className="card__upperContainer">
+        <div className="img__cardContainer">
+          <img className="img__card"scr=" " alt="" height="100px" width="100px" />
         </div>
       </div>
 
-      <div className="lower-container">
-        <h2> {firstName} {lastName}</h2>
-        <h4> {job} </h4>
-        <h3>
+      <div className="card__lowerContainer">
+        <h2 className="name__lowerContainer"> {firstName} {lastName}</h2>
+        <h4 className="job__lowerContainer"> {job} </h4>
+        <h3 className="subtitle__lowerContainer" >
           <span>{boot}</span> <span>{location}</span>
         </h3>
-        <p>
+        <p className="location__lowerContainer">
           <span> {area} </span> <span>{loc}</span>
         </p>
       </div>

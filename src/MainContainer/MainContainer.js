@@ -7,7 +7,7 @@ import ListContainer from "./ListContainer/ListContainer";
 import ListStudents from "./ListContainer/ListStudents";
 import ListHomeworks from "./ListContainer/ListHomeworks";
 import Survey from "./Survey/Survey";
-import Button from "./button1/button";
+import ButtonContainer from "./ButtonContainer/ButtonContainer";
 import Card from "./Card/Card";
 import ModalContainer from "../ModalContainer/ModalContainer";
 import EditarPerfil from "../EditProfile/EditarPerfil";
@@ -150,12 +150,12 @@ export default function MainContainer({ initialData }) {
           <Card profileData={profileData} />
         </div>
         <div className="ContainerButtons">
-          <Button
+          <ButtonContainer
             children="Editar Perfil"
             handleEvent={handleEditProfile}
-          ></Button>
-          <Button children="Ver Agenda" handleEvent={handleShowAgenda}></Button>
-          <Button children="Ver Feedback" handleEvent={handleShowFeedback}></Button>
+          ></ButtonContainer>
+          <ButtonContainer children="Ver Agenda" handleEvent={handleShowAgenda}></ButtonContainer>
+          <ButtonContainer children="Ver Feedback" handleEvent={handleShowFeedback}></ButtonContainer>
         </div>
       </div>
       <div className="MainContainer__right">

@@ -24,11 +24,11 @@ export default function EditarPerfil({profileData, handleNewData}) {
   
   return (
     <>
-        <div className="editarperfil1">
-        <h3 className="editperfil">Perfil</h3>
-        <p className="editfoto">Foto</p>
-        <div className= 'image-container'>
-                <img  scr={foto} alt='' /> 
+        <div className="editarPerfil1">
+        <h3 className="editPerfil">Perfil</h3>
+        <p className="editFoto">Foto</p>
+        <div className= 'imageContainer'>
+                <img scr={foto} alt='' /> 
             </div>
         <div className="form1">
         <form>

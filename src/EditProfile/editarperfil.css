@@ -1,56 +1,60 @@
-.editperfil{
+.editPerfil{
   font-size: 2.5rem;
 }
-.editfoto{
+.editFoto{
     font-size: 1.1rem;
-}
-.image-container img{
-    height:2rem;
-    width :2rem;
-    
 }
 .form1{
     resize: none;
     min-width: 100%;
     display: block;
 }
-.editarperfil1{
+.editarPerfil1{
     display:flex;
     flex-direction: column;
     justify-content: center;
     min-width: 100%;
-    max-height: 60vh;
+    max-height: 46vh;
+}
+.imageContainer{
+  background-color: #c4c4c4;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  padding: 2.5rem;
+  transform: translate(1.5rem, .1rem);
 }
 .form1 *:nth-child(1) {
-  margin-top: .7rem;
+  margin-top: .3rem;
   padding: 0.5rem;
   font-size: 1rem;
   margin-bottom: 1rem;
 }
 .form1 *:nth-child(3) {
-  margin-top: .7rem;
+  margin-top: .5rem;
   padding: 0.4rem;
   font-size: 1rem;
   width: 100%;
 }
 .form1 *:nth-child(2) {
-  margin-top: .5rem;
-  padding: 0.5rem;
-  font-size: .4rem;
+  margin-top: .3rem;
+  padding: 0.3rem;
+  font-size: 1rem;
   width: 100%;
   margin-bottom: .7rem;
 } 
 .form1 *:nth-child(4) {
-  margin-top: 1rem;
-  padding: 0.5rem;
-  font-size: .4rem;
+  margin-top: .5rem;
+  padding: 0.3rem;
+  font-size: 1rem;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 } 
 .form1 *:nth-child(5) {
   padding: 0.5rem;
   font-size: 1rem;
   width: 100%;
-  max-height: 2rem ;
+  min-height: 1rem;
+  max-height: 3rem ;
   resize: none;
 } 
